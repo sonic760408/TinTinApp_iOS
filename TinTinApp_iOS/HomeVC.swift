@@ -20,10 +20,18 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
     @IBOutlet weak var btn_sales: UIButton!
     @IBOutlet weak var btn_ticket: UIButton!
     
+    
     var timer:Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //set current layout is void
+        self.view.setNeedsLayout()
+        
+        //force layout to refresh scrollview width
+        self.view.layoutIfNeeded()
+        
         initViewObj()
         addSlideMenuButton()
         // Do any additional setup after loading the view.
@@ -34,11 +42,20 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews(){
+        super.viewDidLayoutSubviews()
+
+    }
+    
+    
     func initViewObj()
     {
         let logo = UIImage(named: "ic_title.png")
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
+        
+        //galleryScrollView.translatesAutoresizingMaskIntoConstraints = true
+        //galleryScrollView.autoresizingMask = UIViewAutoresizing.flexibleWidth;UIViewAutoresizing.flexibleHeight
         
         btn_shop.setImage(UIImage(named: "ic_m_shop.png")?.withRenderingMode(.alwaysOriginal), for: UIControlState.normal)
         btn_fb.setImage(UIImage(named: "ic_m_fb.png")?.withRenderingMode(.alwaysOriginal), for: UIControlState.normal)
@@ -46,6 +63,13 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
         btn_dm.setImage(UIImage(named: "ic_m_dm.png")?.withRenderingMode(.alwaysOriginal), for: UIControlState.normal)
         btn_sales.setImage(UIImage(named: "ic_m_sales.png")?.withRenderingMode(.alwaysOriginal), for: UIControlState.normal)
         btn_ticket.setImage(UIImage(named: "ic_m_ecoupon.png")?.withRenderingMode(.alwaysOriginal), for: UIControlState.normal)
+        
+        btn_shop.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        btn_fb.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        btn_event.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        btn_dm.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        btn_sales.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        btn_ticket.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         
         btn_shop.addTarget(self, action: #selector(HomeVC.buttonClicked(_:)), for: .touchUpInside)
         btn_fb.addTarget(self, action: #selector(HomeVC.buttonClicked(_:)), for: .touchUpInside)
@@ -56,18 +80,23 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
         
         //scrollview banner
         //1
-        self.galleryScrollView.frame = CGRect(x:0, y:0, width:self.galleryScrollView.frame.width, height:self.galleryScrollView.frame.height+64)
+        self.galleryScrollView.frame = CGRect(x:0, y:0, width:self.galleryScrollView.frame.width, height:self.galleryScrollView.frame.height)
 
-        let scrollViewWidth:CGFloat = self.galleryScrollView.frame.width
-        let scrollViewHeight:CGFloat = self.galleryScrollView.frame.height-64
+        let scrollViewSize:CGSize = self.galleryScrollView.frame.size
+        //let scrollViewWidth:CGFloat = self.galleryScrollView.frame.width
+        //let scrollViewHeight:CGFloat = self.galleryScrollView.frame.height-64
+        
+        let scrollViewWidth:CGFloat = scrollViewSize.width
+        let scrollViewHeight:CGFloat = scrollViewSize.height
+        
         //2
-
+        print("WIDTH: \(scrollViewWidth) ,HEIGHT: \(scrollViewHeight)")
         //3
-        let imgOne = UIImageView(frame: CGRect(x:0, y:64,width:scrollViewWidth, height:scrollViewHeight))
+        let imgOne = UIImageView(frame: CGRect(x:0, y:-64,width:scrollViewWidth, height:scrollViewHeight))
         imgOne.image = UIImage(named: "ic_test_0.png")
-        let imgTwo = UIImageView(frame: CGRect(x:scrollViewWidth, y:64,width:scrollViewWidth, height:scrollViewHeight))
+        let imgTwo = UIImageView(frame: CGRect(x:scrollViewWidth, y:-64,width:scrollViewWidth, height:scrollViewHeight))
         imgTwo.image = UIImage(named: "ic_test_1.png")
-        let imgThree = UIImageView(frame: CGRect(x:scrollViewWidth*2, y:64,width:scrollViewWidth, height:scrollViewHeight))
+        let imgThree = UIImageView(frame: CGRect(x:scrollViewWidth*2, y:-64,width:scrollViewWidth, height:scrollViewHeight))
         imgThree.image = UIImage(named: "ic_test_2.png")
 
         
@@ -92,7 +121,7 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
         let pageWidth:CGFloat = self.galleryScrollView.frame.width
         let maxWidth:CGFloat = pageWidth * 3
         let contentOffset:CGFloat = self.galleryScrollView.contentOffset.x
-        let height:CGFloat = self.galleryScrollView.frame.height
+        let height:CGFloat = self.galleryScrollView.frame.height - 64
         
         var slideToX = contentOffset + pageWidth
         
