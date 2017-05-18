@@ -7,11 +7,16 @@ target 'TinTinApp_iOS' do
 
   # Pods for TinTinApp_iOS
   
-  pod 'Firebase'
+  pod 'Firebase' #firebase
   use_frameworks!
   pod 'Material', '~> 2.0'
-  pod 'Alamofire', '~> 4.0'
-  pod 'Gloss', '~> 1.2'
+  pod 'Alamofire', '~> 4.0' #Alamofire http
+  pod 'Gloss', '~> 1.2' #gloss json
+  #pod 'FoldingCell', '~> 2.0.3'
+  pod 'SwipeCellKit' #swipe table cell
+  pod 'GoogleMaps' #google map
+  pod 'GooglePlaces' #google place
+  
   target 'TinTinApp_iOSTests' do
     inherit! :search_paths
     # Pods for testing

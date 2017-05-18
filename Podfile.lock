@@ -14,18 +14,29 @@ PODS:
   - FirebaseInstanceID (1.0.10):
     - FirebaseCore (~> 3.6)
   - Gloss (1.2.4)
+  - GoogleMaps (2.2.0):
+    - GoogleMaps/Maps (= 2.2.0)
+  - GoogleMaps/Base (2.2.0)
+  - GoogleMaps/Maps (2.2.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.2.0):
+    - GoogleMaps/Base (= 2.2.0)
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - Material (2.6.3):
     - Material/Core (= 2.6.3)
   - Material/Core (2.6.3)
+  - SwipeCellKit (1.8.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - Firebase
   - Gloss (~> 1.2)
+  - GoogleMaps
+  - GooglePlaces
   - Material (~> 2.0)
+  - SwipeCellKit
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -34,9 +45,12 @@ SPEC CHECKSUMS:
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
+  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
+  GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
+  SwipeCellKit: 01a58bf7e63d5df09aedd161828833944c4c333c
 
-PODFILE CHECKSUM: 346a7584d8de7d337d4e19af1e15b7439aeb9db0
+PODFILE CHECKSUM: 7b4597f37e49a2f88e9d762e8fcbce4dfed73168
 
 COCOAPODS: 1.2.1

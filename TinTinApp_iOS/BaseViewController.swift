@@ -49,13 +49,13 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         }
     }
     
-    func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
+    private func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
         let destViewController : UIViewController = self.storyboard!.instantiateViewController(withIdentifier: strIdentifier)
         
         let topViewController : UIViewController = self.navigationController!.topViewController!
         
         if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
-            print("Same VC")
+            
         } else {
             self.navigationController!.pushViewController(destViewController, animated: true)
         }

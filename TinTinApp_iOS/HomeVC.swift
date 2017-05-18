@@ -32,7 +32,7 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
         //force layout to refresh scrollview width
         self.view.layoutIfNeeded()
         
-        initViewObj()
+        self.initViewObj()
         addSlideMenuButton()
         // Do any additional setup after loading the view.
     }
@@ -90,7 +90,7 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
         let scrollViewHeight:CGFloat = scrollViewSize.height
         
         //2
-        print("WIDTH: \(scrollViewWidth) ,HEIGHT: \(scrollViewHeight)")
+        //print("WIDTH: \(scrollViewWidth) ,HEIGHT: \(scrollViewHeight)")
         //3
         let imgOne = UIImageView(frame: CGRect(x:0, y:-64,width:scrollViewWidth, height:scrollViewHeight))
         imgOne.image = UIImage(named: "ic_test_0.png")
@@ -174,6 +174,18 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
             print("SALES\n")
         }else if sender === btn_ticket{
             print("TICKET\n")
+        }
+    }
+    
+    private func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
+        let destViewController : UIViewController = self.storyboard!.instantiateViewController(withIdentifier: strIdentifier)
+        
+        let topViewController : UIViewController = self.navigationController!.topViewController!
+        
+        if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
+
+        } else {
+            self.navigationController!.pushViewController(destViewController, animated: true)
         }
     }
     

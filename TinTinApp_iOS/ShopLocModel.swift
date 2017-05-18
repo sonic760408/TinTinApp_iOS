@@ -74,7 +74,7 @@ class ShopLoc: Decodable{
         
         self.shop_phone = ("phone" <~~ json)!
         self.shop_fpark = ("fpark" <~~ json)!
-        self.shop_ppark = ("fpark" <~~ json)!
+        self.shop_ppark = ("ppark" <~~ json)!
         self.isHiShop = ("hi" <~~ json)!
         self.shop_onBus = ("timerun" <~~ json)!
         self.shop_offBus = ("timeup" <~~ json)!
