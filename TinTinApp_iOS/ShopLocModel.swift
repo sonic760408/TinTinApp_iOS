@@ -11,20 +11,20 @@ import Gloss
 
 class ShopLoc: Decodable{
     
-    var shop_no: String;
-    var shop_name: String;
-    var shop_lat: Double;  //latitude
-    var shop_lng: Double;  //longitude
-    var shop_addr: String;  //shop address
+    private var shop_no: String;
+    private var shop_name: String;
+    private var shop_lat: Double;  //latitude
+    private var shop_lng: Double;  //longitude
+    private var shop_addr: String;  //shop address
     
-    var shop_phone: String; //shop phone no
-    var shop_fpark: Bool; //shop parking (0: none, 1: private, 2:public)
-    var shop_ppark: Bool; //shop parking (0: none, 1: private, 2:public)
-    var isHiShop: Bool;  //is health insurance pharmacy
-    var shop_onBus: String; //shop on business
-    var shop_offBus: String; //shop off business
+    private var shop_phone: String; //shop phone no
+    private var shop_fpark: Bool; //shop parking (0: none, 1: private, 2:public)
+    private var shop_ppark: Bool; //shop parking (0: none, 1: private, 2:public)
+    private var isHiShop: Bool;  //is health insurance pharmacy
+    private var shop_onBus: String; //shop on business
+    private var shop_offBus: String; //shop off business
     
-    var isMetro: Bool; //metro shop
+    private var isMetro: Bool; //metro shop
     
     init()
     {

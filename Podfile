@@ -16,6 +16,9 @@ target 'TinTinApp_iOS' do
   pod 'SwipeCellKit' #swipe table cell
   pod 'GoogleMaps' #google map
   pod 'GooglePlaces' #google place
+  pod 'NVActivityIndicatorView' #activity indicator view
+  pod 'Toast-Swift', '~> 2.0.0' #android toast
+  pod 'AlamofireImage', '~> 3.1' #Alamofire Image
   
   target 'TinTinApp_iOSTests' do
     inherit! :search_paths

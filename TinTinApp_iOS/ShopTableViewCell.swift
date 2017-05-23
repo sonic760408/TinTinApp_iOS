@@ -31,8 +31,8 @@ class ShopTableViewCell: UITableViewCell{
         pparkImg.isHidden = true
         nhiImg.isHidden = true
         metroImg.isHidden = true
-        print("Cell's initialised")// I see this
-        print(reuseIdentifier)// prints TimesheetCell
+        //print("Cell's initialised")// I see this
+        //print(reuseIdentifier)// prints TimesheetCell
     }
 
     func setNameLabel(shopname: String?)

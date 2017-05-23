@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Gloss.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>NVActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TinTinApp_iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -50,6 +60,11 @@
 			<false/>
 		</dict>
 		<key>SwipeCellKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Toast-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -72,6 +87,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3EDFE4052B5DE7D509935AC0774CB135</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>40E7477AD67135868F5FB08136602674</key>
 		<dict>
 			<key>primary</key>
@@ -82,7 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>592C496CEB6E0B577A2571CE4C211AFA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>77218EC44A39BE270C84535DC19564FE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>82F0C72C8F4AB1E4E09658EA067B4514</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +127,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A84AF54C63270C8C759DC94CB45FAF31</key>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD7660A7349F06D0E183B14A70D61CD4</key>
+		<key>AC35E03242DEAD38E686DAEBBD861B43</key>
 		<dict>
 			<key>primary</key>
 			<true/>

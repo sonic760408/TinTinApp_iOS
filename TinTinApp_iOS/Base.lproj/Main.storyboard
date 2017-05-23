@@ -257,11 +257,40 @@
                         <outlet property="galleryScrollView" destination="ovY-ee-2sT" id="boi-DO-rKG"/>
                         <segue destination="khG-SL-0rk" kind="show" identifier="Facebook" id="WvG-AQ-ekI"/>
                         <segue destination="FWC-Q1-1qW" kind="show" identifier="Shop" id="2x6-Sb-AI0"/>
+                        <segue destination="zUE-J9-id6" kind="show" identifier="Event" id="i50-ZI-4IQ"/>
+                        <segue destination="rh2-5F-Akc" kind="show" id="zQT-Rb-i8j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1098.5507246376812" y="300.81521739130437"/>
+        </scene>
+        <!--DMVC-->
+        <scene sceneID="3Dw-Rx-GYf">
+            <objects>
+                <viewController storyboardIdentifier="DMVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rh2-5F-Akc" customClass="DMVC" customModule="TinTinApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oA0-rj-2Lg"/>
+                        <viewControllerLayoutGuide type="bottom" id="p6q-cf-EVQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pM4-Dz-fk1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vh7-Q7-aeo">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="dm_img" destination="vh7-Q7-aeo" id="i7H-1h-5Jw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dnv-EN-W7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-639.20000000000005" y="1233.7331334332835"/>
         </scene>
         <!--Facebook-->
         <scene sceneID="q6l-iR-WN3">
@@ -292,6 +321,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmn-PL-HS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1858" y="300"/>
+        </scene>
+        <!--EventVC-->
+        <scene sceneID="xP5-JN-fr7">
+            <objects>
+                <viewController storyboardIdentifier="EventVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zUE-J9-id6" customClass="EventVC" customModule="TinTinApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zIk-eZ-s4m"/>
+                        <viewControllerLayoutGuide type="bottom" id="txM-yg-z6D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YJ5-0W-T5H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u1t-R2-uvs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="273" y="1234"/>
         </scene>
         <!--ShopVC-->
         <scene sceneID="fFn-Vb-eOu">
@@ -373,7 +420,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DGj-7d-jfR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="mjw-Ry-qIh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="mjw-Ry-qIh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -513,16 +560,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOo-pA-3rj" userLabel="Gmap View" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOo-pA-3rj" userLabel="ShopMap" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fOo-pA-3rj" firstAttribute="top" secondItem="ZkO-6y-axf" secondAttribute="bottom" id="1dw-U3-di5"/>
+                            <constraint firstItem="fOo-pA-3rj" firstAttribute="width" secondItem="Tok-Bl-lGA" secondAttribute="width" id="57Z-cy-lKl"/>
+                            <constraint firstItem="fOo-pA-3rj" firstAttribute="height" secondItem="Tok-Bl-lGA" secondAttribute="height" id="esx-cI-cUW"/>
+                            <constraint firstAttribute="trailing" secondItem="fOo-pA-3rj" secondAttribute="trailing" id="hGQ-xU-453"/>
+                            <constraint firstItem="fOo-pA-3rj" firstAttribute="leading" secondItem="Tok-Bl-lGA" secondAttribute="leading" id="p6C-l4-L4X"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="viewMap" destination="fOo-pA-3rj" id="KEX-B6-LXW"/>
+                        <outlet property="viewMap" destination="fOo-pA-3rj" id="8z2-VS-LHb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1x-Hb-Xck" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -695,11 +748,71 @@
                     </view>
                     <connections>
                         <outlet property="shoptable" destination="2Dd-aU-fAf" id="URE-mS-P5Q"/>
+                        <segue destination="rss-jy-rvb" kind="show" identifier="ShopOneMapVC" id="CGq-41-NXT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfg-ID-LLZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2077.5999999999999" y="2307.7961019490258"/>
+        </scene>
+        <!--ShopOneMapVC-->
+        <scene sceneID="DwM-ej-We3">
+            <objects>
+                <viewController storyboardIdentifier="ShopOneVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rss-jy-rvb" userLabel="ShopOneMapVC" customClass="ShopOneMapVC" customModule="TinTinApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ebm-ax-ihc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sjq-1U-nTa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iLZ-Kr-WcC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oeu-tY-tRe" userLabel="ShopOneMap" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="533.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiL-UW-o6a" userLabel="Btn Stack View">
+                                <rect key="frame" x="0.0" y="533.5" width="375" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Muu-gf-Bqv" userLabel="ShopLocBtn">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                        <state key="normal" title="分店位置"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6j-tf-0WN" userLabel="RefreshBtn">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
+                                        <state key="normal" title="重新整理"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Muu-gf-Bqv" firstAttribute="width" secondItem="YiL-UW-o6a" secondAttribute="width" multiplier="0.5" id="Gjm-Ex-LbD"/>
+                                    <constraint firstItem="Muu-gf-Bqv" firstAttribute="height" secondItem="YiL-UW-o6a" secondAttribute="height" id="Jz4-yw-MF4"/>
+                                    <constraint firstItem="R6j-tf-0WN" firstAttribute="height" secondItem="YiL-UW-o6a" secondAttribute="height" id="LTE-Dc-vRn"/>
+                                    <constraint firstItem="Muu-gf-Bqv" firstAttribute="height" secondItem="YiL-UW-o6a" secondAttribute="height" id="nxA-ve-v6D"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YiL-UW-o6a" firstAttribute="width" secondItem="iLZ-Kr-WcC" secondAttribute="width" id="0eH-mz-q2q"/>
+                            <constraint firstItem="Oeu-tY-tRe" firstAttribute="width" secondItem="iLZ-Kr-WcC" secondAttribute="width" id="7R3-J1-ri1"/>
+                            <constraint firstItem="Oeu-tY-tRe" firstAttribute="height" secondItem="iLZ-Kr-WcC" secondAttribute="height" multiplier="0.8" id="8pp-dr-AF8"/>
+                            <constraint firstItem="YiL-UW-o6a" firstAttribute="top" secondItem="Oeu-tY-tRe" secondAttribute="bottom" id="HM3-Rh-DU8"/>
+                            <constraint firstAttribute="trailing" secondItem="YiL-UW-o6a" secondAttribute="trailing" id="WGN-0a-jsu"/>
+                            <constraint firstAttribute="trailing" secondItem="Oeu-tY-tRe" secondAttribute="trailing" id="Xm9-0K-pz6"/>
+                            <constraint firstItem="Oeu-tY-tRe" firstAttribute="top" secondItem="ebm-ax-ihc" secondAttribute="bottom" id="g9r-Ev-kr4"/>
+                            <constraint firstItem="YiL-UW-o6a" firstAttribute="leading" secondItem="iLZ-Kr-WcC" secondAttribute="leading" id="hPi-Ua-DAi"/>
+                            <constraint firstItem="Oeu-tY-tRe" firstAttribute="leading" secondItem="iLZ-Kr-WcC" secondAttribute="leading" id="oLJ-TT-zK6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="refresh_btn" destination="R6j-tf-0WN" id="T5z-bJ-lzu"/>
+                        <outlet property="shoploc_btn" destination="Muu-gf-Bqv" id="uZH-us-MvV"/>
+                        <outlet property="viewMap" destination="Oeu-tY-tRe" id="8Ed-Kz-qsW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vs5-IR-quB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2844" y="2307.7961019490258"/>
         </scene>
     </scenes>
     <resources>

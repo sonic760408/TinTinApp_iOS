@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:kaohsiung.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:tintin.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:America.gpx">
+   </FileRef>
+   <FileRef
       location = "group:TinTinApp_iOS.xcodeproj">
    </FileRef>
    <FileRef

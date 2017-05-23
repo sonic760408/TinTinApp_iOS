@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.4.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
   - Firebase (3.17.0):
     - Firebase/Core (= 3.17.0)
   - Firebase/Core (3.17.0):
@@ -27,19 +29,25 @@ PODS:
   - Material (2.6.3):
     - Material/Core (= 2.6.3)
   - Material/Core (2.6.3)
+  - NVActivityIndicatorView (3.6.1)
   - SwipeCellKit (1.8.0)
+  - Toast-Swift (2.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - AlamofireImage (~> 3.1)
   - Firebase
   - Gloss (~> 1.2)
   - GoogleMaps
   - GooglePlaces
   - Material (~> 2.0)
+  - NVActivityIndicatorView
   - SwipeCellKit
+  - Toast-Swift (~> 2.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   Firebase: 4b66b5b59c43edac745b87f0c87e42cdd0279c13
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
@@ -49,8 +57,10 @@ SPEC CHECKSUMS:
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
+  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
   SwipeCellKit: 01a58bf7e63d5df09aedd161828833944c4c333c
+  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: 7b4597f37e49a2f88e9d762e8fcbce4dfed73168
+PODFILE CHECKSUM: eb04df3e096945fd49f3bc795930f5a85d79dbbe
 
 COCOAPODS: 1.2.1

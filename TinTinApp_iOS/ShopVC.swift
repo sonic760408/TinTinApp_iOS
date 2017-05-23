@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShopVC: UIViewController{
+class ShopVC: BaseViewController{
     
     @IBOutlet private weak var btn_shop: UIButton!
     @IBOutlet private weak var btn_shopmap: UIButton!
@@ -17,7 +17,7 @@ class ShopVC: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //addSlideMenuButton()
+        addSlideMenuButton()
         // Do any additional setup after loading the view.
         
         self.initViewObj()
@@ -77,11 +77,9 @@ class ShopVC: UIViewController{
     func buttonClicked(_ sender: AnyObject?) {
         if sender === btn_shop {
             // do something
-            print("1 SHOP\n")
             self.openViewControllerBasedOnIdentifier("ShopVC")
         } else if sender === btn_shopmap {
             // do something
-            print("1 ShopMap\n")
             self.openViewControllerBasedOnIdentifier("ShopMapVC")
         }
     }
@@ -92,7 +90,7 @@ class ShopVC: UIViewController{
         let topViewController : UIViewController = self.navigationController!.topViewController!
         
         if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
-            print("1 Same VC")
+            NSLog("%s, line:%d - Same VC", #function, #line)
         } else {
             self.navigationController!.pushViewController(destViewController, animated: true)
         }

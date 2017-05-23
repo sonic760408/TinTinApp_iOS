@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import Gloss
 
-class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet private weak var shoptable: UITableView!
     
@@ -41,6 +41,8 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
          self.btn_shopmap.addTarget(self, action: #selector(ShopVC.buttonClicked(_:)), for: .touchUpInside)
          */
     }
+    
+    
     
     func loadInfo()
     {
@@ -75,6 +77,7 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
                         NSLog("%s, line:%d - success", #function, #line)
                         //print("example success")
                     default:
+                        self.view.makeToast("取得分店資訊失敗: 錯誤代碼: \(status)",duration: 3.0, position: .bottom)
                         NSLog("%s, line:%d - error code %d", #function, #line, status)
                         //print("error with response status: \(status)")
                     }
@@ -98,7 +101,8 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
                 break
                 
             case .failure(let error):
-                print("Error: \(error)")
+                self.view.makeToast("請啟用網路連線取得分店資訊",duration: 3.0, position: .bottom)
+                NSLog("%s, line:%d - Error: \(error)", #function, #line)
                 break
             }
         }
@@ -243,5 +247,128 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
         return shoplocs!
         //array.append(ShopLoc())
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let diag = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "\u{260E}\n 撥號") { action, index in
+            //self.isEditing = false
+            
+            //set dial phone (使用實機測試)
+            self.callNumber(phoneNumber: self.myshop[indexPath.row].getShop_phone())
+        }
+        //more.backgroundColor = UIColor(patternImage: UIImage(named: "nhi")!)
+        diag.backgroundColor = UIColor(rgb: 0x00d85b)
+        //more.image = UIImage(named: "nhi")
+        
+        let shop = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "\u{1F3EA}\n 分店位置") { action, index in
+            //self.isEditing = false
+            //set show map
+        //self.openViewControllerBasedOnIdentifierWithParameter("ShopOneVC"
+        //    ,self.myshop[indexPath.row])
+            self.performSegue(withIdentifier: "ShopOneMapVC", sender: self.myshop[indexPath.row])
+        }
+        shop.backgroundColor = UIColor(rgb: 0x0347b7)
+        
+        /*
+        let share = TableViewRowAction(style: UITableViewRowActionStyle.default, title: "Share") { action, index in
+            //self.isEditing = false
+            print("share button tapped")
+        }
+        share.backgroundColor = UIColor.blue
+        share.image = UIImage(named: "metro")
+        */
+        
+        return [diag, shop]
+        //return [share, favorite, more]
+    }
+    
+    private func callNumber(phoneNumber:String) {
+        
+        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+            
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
+            }
+        }
+    }
+    
+    private func openViewControllerBasedOnIdentifierWithParameter
+        (_ strIdentifier:String, _ sender:Any){
+        let destViewController : UIViewController = self.storyboard!.instantiateViewController(withIdentifier: strIdentifier)
+        
+        let topViewController : UIViewController = self.navigationController!.topViewController!
+        
+        if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
+            NSLog("%s, line:%d - Same VC", #function, #line)
+        } else {
+            self.navigationController!.pushViewController(destViewController, animated: true)
+            
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShopOneMapVC" {
+            
+            if let shopOneMapVC = segue.destination as? ShopOneMapVC {
+                shopOneMapVC.oneshop = sender as? ShopLoc
+            }
+        }
+    }
 
+}
+
+
+class TableViewRowAction: UITableViewRowAction
+{
+    var image: UIImage?
+    
+    func _setButton(button: UIButton)
+    {
+        if let image = image, let titleLabel = button.titleLabel
+        {
+            let labelString = NSString(string: titleLabel.text!)
+            let titleSize = labelString.size(attributes: [NSFontAttributeName: titleLabel.font])
+            
+            button.tintColor = UIColor.white
+            button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+            button.imageEdgeInsets.right = -titleSize.width
+        }
+    }
+}
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
+    
+    convenience init(red: Int, green: Int, blue: Int, a: CGFloat = 1.0) {
+        self.init(
+            red: CGFloat(red) / 255.0,
+            green: CGFloat(green) / 255.0,
+            blue: CGFloat(blue) / 255.0,
+            alpha: a
+        )
+    }
+    
+    convenience init(rgb: Int, a: CGFloat = 1.0) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF,
+            a: a
+        )
+    }
 }
