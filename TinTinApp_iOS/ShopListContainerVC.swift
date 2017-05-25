@@ -46,7 +46,7 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
     
     func loadInfo()
     {
-        
+        self.view.makeToastActivity(.center)
         let url = URL(string: "https://www.norbelbaby.com.tw/tintinapp/w/store/json/grid")!
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
@@ -57,6 +57,7 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
         } catch {
             // No-op
+            self.view.hideToastActivity()
             NSLog("%s, line:%d - Error: JSON ERROR", #function, #line)
         }
         
@@ -77,6 +78,7 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
                         NSLog("%s, line:%d - success", #function, #line)
                         //print("example success")
                     default:
+                        self.view.hideToastActivity()
                         self.view.makeToast("取得分店資訊失敗: 錯誤代碼: \(status)",duration: 3.0, position: .bottom)
                         NSLog("%s, line:%d - error code %d", #function, #line, status)
                         //print("error with response status: \(status)")
@@ -87,7 +89,10 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
                     _ = result as! NSDictionary
                     //print(json_str)
                     guard data is JSON
-                        else{fatalError()}
+                        else{
+                            NSLog("%s, line:%d - error: data is not JSON", #function, #line)
+                            fatalError()
+                        }
                     let shop = self.parseJSON(data: data as! JSON)
                     
                     //for i in 0 ..< Int(shop.count){
@@ -96,11 +101,18 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     self.myshop = shop
                     self.regShopTable()
+                    self.view.hideToastActivity()
                 }
-                
+                else
+                {
+                    self.view.hideToastActivity()
+                    self.view.makeToast("請啟用網路連線取得分店資訊",duration: 3.0, position: .bottom)
+                    NSLog("%s, line:%d - Error: No Response Data", #function, #line)
+                }
                 break
                 
             case .failure(let error):
+                self.view.hideToastActivity()
                 self.view.makeToast("請啟用網路連線取得分店資訊",duration: 3.0, position: .bottom)
                 NSLog("%s, line:%d - Error: \(error)", #function, #line)
                 break
@@ -257,7 +269,7 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
             self.callNumber(phoneNumber: self.myshop[indexPath.row].getShop_phone())
         }
         //more.backgroundColor = UIColor(patternImage: UIImage(named: "nhi")!)
-        diag.backgroundColor = UIColor(rgb: 0x00d85b)
+        diag.backgroundColor = UIColor(rgb: 0x3b8cf7)
         //more.image = UIImage(named: "nhi")
         
         let shop = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "\u{1F3EA}\n 分店位置") { action, index in
@@ -267,7 +279,7 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
         //    ,self.myshop[indexPath.row])
             self.performSegue(withIdentifier: "ShopOneMapVC", sender: self.myshop[indexPath.row])
         }
-        shop.backgroundColor = UIColor(rgb: 0x0347b7)
+        shop.backgroundColor = UIColor(rgb: 0x0a70f5)
         
         /*
         let share = TableViewRowAction(style: UITableViewRowActionStyle.default, title: "Share") { action, index in

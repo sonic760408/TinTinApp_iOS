@@ -46,26 +46,30 @@ class ShopMapContainerVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager = CLLocationManager()
-        SwiftTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(ShopOneMapVC.updateCounter), userInfo: nil, repeats: true)
-        self.initViewObj()
-        self.loadInfo()
+
+        //print("viewDidLoad")
         //addSlideMenuButton()
         // Do any additional setup after loading the view.
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //self.viewMap.addSubview(self.viewMap)
+        
+        locationManager = CLLocationManager()
+        SwiftTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(ShopOneMapVC.updateCounter), userInfo: nil, repeats: true)
+        self.initViewObj()
+        self.loadInfo()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
         //print("viewWillAppear")
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        
+
         // 1. 還沒有詢問過用戶以獲得權限
         if CLLocationManager.authorizationStatus() == .notDetermined {
             locationManager.requestAlwaysAuthorization()
@@ -83,19 +87,23 @@ class ShopMapContainerVC: UIViewController, CLLocationManagerDelegate {
         
         super.viewDidAppear(animated)
         
-        //print("viewDidAppear")
+        print("viewDidAppear")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        //print("viewWillDisappear")
+        print("viewWillDisappear")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        //print("viewDidDisappear")
+        
+        //self.viewMap.clear()
+        //self.viewMap.removeFromSuperview()
+        //self.viewMap = nil
+        print("viewDidDisappear")
     }
     
     
@@ -150,7 +158,6 @@ class ShopMapContainerVC: UIViewController, CLLocationManagerDelegate {
     //get location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation
         _ = locationObj.coordinate
@@ -376,7 +383,7 @@ class ShopMapContainerVC: UIViewController, CLLocationManagerDelegate {
         
         var nearestShop_index: Int = 0
         
-        if (myshop != nil)
+        if (myshop.count != 0)
         {
             for i in 0 ..< Int(myshop.count){
                 shop_lat = myshop[i].getShop_lat()
@@ -388,8 +395,10 @@ class ShopMapContainerVC: UIViewController, CLLocationManagerDelegate {
                     nearestShop_index = i;
                     minDistance = distance;
                 }
+                print("1 nearestShop_index = \(nearestShop_index)")
                 
             }
+            print("2 nearestShop_index = \(nearestShop_index)")
             return myshop[nearestShop_index]
         }
         else{

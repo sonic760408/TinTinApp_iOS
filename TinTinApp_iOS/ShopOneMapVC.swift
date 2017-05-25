@@ -76,6 +76,27 @@ class ShopOneMapVC: UIViewController, CLLocationManagerDelegate {
         //drawRoute()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //print("viewWillAppear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //print("viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.viewMap.clear()
+        //self.viewMap.stopRendering()
+        self.viewMap.removeFromSuperview()
+        self.viewMap = nil
+        //print("viewDidDisappear")
+    }
+    
     func updateCounter() {
         MapLocCounter += 1
         //NSLog("\(MapLocCounter)")

@@ -6,9 +6,9 @@ target 'TinTinApp_iOS' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
 
   # Pods for TinTinApp_iOS
-  
-  pod 'Firebase' #firebase
   use_frameworks!
+  pod 'Firebase' #firebase
+
   pod 'Material', '~> 2.0'
   pod 'Alamofire', '~> 4.0' #Alamofire http
   pod 'Gloss', '~> 1.2' #gloss json
@@ -18,7 +18,12 @@ target 'TinTinApp_iOS' do
   pod 'GooglePlaces' #google place
   pod 'NVActivityIndicatorView' #activity indicator view
   pod 'Toast-Swift', '~> 2.0.0' #android toast
-  pod 'AlamofireImage', '~> 3.1' #Alamofire Image
+  #pod 'AlamofireImage', '~> 3.1' #Alamofire Image
+  #pod "ImageSlideshow/Alamofire", '~> 1.3' #Image Slide show
+  #pod "ImageSlideshow/Kingfisher"
+  pod "ImageSlideshow/SDWebImage"
+  pod 'SwiftPhotoGallery'
+  #pod 'Kingfisher', '~> 3.0'
   
   target 'TinTinApp_iOSTests' do
     inherit! :search_paths

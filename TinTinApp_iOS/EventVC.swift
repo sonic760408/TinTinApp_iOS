@@ -14,7 +14,7 @@ class EventVC: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSlideMenuButton()
+        //addSlideMenuButton()
         
         // Do any additional setup after loading the view.
         self.initViewObj()

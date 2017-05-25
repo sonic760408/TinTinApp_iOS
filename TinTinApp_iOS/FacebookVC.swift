@@ -18,10 +18,59 @@ class FacebookVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //addSlideMenuButton()
+        let newBackButton = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(FacebookVC.back(sender:)))
+        
+        self.navigationItem.leftBarButtonItem = newBackButton
+        //self.navigationItem.hidesBackButton = false
+        //addSlideMenuButton()'
+        
         initViewObj()
         initweb(_url: FACEBOOK_URL)
         // Do any additional setup after loading the view.
+    }
+    
+    /*
+    override func willMove(toParentViewController parent: UIViewController?)
+    {
+        if parent == nil
+        {
+            print("BACK PRESSED")
+            if(webView.canGoBack)
+            {
+                print("WEBVIEW BACK")
+                //self.navigationItem.hidesBackButton = true
+                webView.goBack()
+            }
+            else
+            {
+                print("WEBVIEW NOBACK")
+                //self.navigationItem.hidesBackButton = false
+                // Perform your custom actions
+                // ...
+                // Go back to the previous ViewController
+                _ = navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    */
+
+    func back(sender: UIBarButtonItem) {
+        
+        if(webView.canGoBack)
+        {
+            //self.navigationItem.hidesBackButton = true
+            webView.goBack()
+        }
+        else
+        {
+            //self.navigationItem.hidesBackButton = false
+            // Perform your custom actions
+            // ...
+            // Go back to the previous ViewController
+            _ = navigationController?.popViewController(animated: true)
+        }
+        
+
     }
 
     override func didReceiveMemoryWarning() {

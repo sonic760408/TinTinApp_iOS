@@ -8,11 +8,15 @@
 
 import UIKit
 import Alamofire
-import AlamofireImage
+import SDWebImage
+import ImageSlideshow
 
-class HomeVC: BaseViewController, UIScrollViewDelegate {
-    @IBOutlet weak var galleryScrollView: UIScrollView!
-    @IBOutlet weak var galleryPageControl: UIPageControl!
+class HomeVC: BaseViewController {
+    //@IBOutlet weak var galleryScrollView: UIScrollView!
+    //@IBOutlet weak var galleryPageControl: UIPageControl!
+    
+    @IBOutlet weak var galleryScrollView: ImageSlideshow!
+    
     
     @IBOutlet weak var btn_shop: UIButton!
     @IBOutlet weak var btn_fb: UIButton!
@@ -23,7 +27,7 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
     @IBOutlet weak var btn_ticket: UIButton!
     
     var timer:Timer!
-    var bannerImages:[UIImage?] = []
+    //var bannerImages:[UIImage?] = []
     var scrollViewWidth:CGFloat = 0.0
     var scrollViewHeight:CGFloat = 0.0
     
@@ -50,7 +54,6 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
         super.viewDidLayoutSubviews()
 
     }
-    
     
     func initViewObj()
     {
@@ -94,34 +97,11 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
         self.scrollViewHeight = scrollViewSize.height
         
         //download banner image
-        downloadBannerImage()
-        
-        /*
-        let imgOne = UIImageView(frame: CGRect(x:0, y:-64,width:scrollViewWidth, height:scrollViewHeight))
-        imgOne.image = UIImage(named: "ic_test_0.png")
-        let imgTwo = UIImageView(frame: CGRect(x:scrollViewWidth, y:-64,width:scrollViewWidth, height:scrollViewHeight))
-        imgTwo.image = UIImage(named: "ic_test_1.png")
-        let imgThree = UIImageView(frame: CGRect(x:scrollViewWidth*2, y:-64,width:scrollViewWidth, height:scrollViewHeight))
-        imgThree.image = UIImage(named: "ic_test_2.png")
+        downloadBannerImageURL()
 
-        
-        self.galleryScrollView.addSubview(imgOne)
-        self.galleryScrollView.addSubview(imgTwo)
-        self.galleryScrollView.addSubview(imgThree)
-
-        //4
-        self.galleryScrollView.contentSize =
-            CGSize(width:self.galleryScrollView.frame.width * 3, height:self.galleryScrollView.frame.height)
-        self.galleryScrollView.delegate = self
-        self.galleryPageControl.currentPage = 0
-        
-        //self.galleryScrollView.isScrollEnabled = false
-        
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
-        */
     }
     
-    func downloadBannerImage()
+    private func downloadBannerImageURL()
     {
         let RANDOMPIC_URL:String  = "https://www.norbelbaby.com.tw/TinTinAppServlet/randompic/json/todayPic";
         
@@ -135,7 +115,8 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
         } catch {
             // No-op
-            print("Error: JSON ERROR")
+            self.view.makeToast("無法取得JSON資訊",duration: 3.0, position: .bottom)
+            NSLog("%s, line:%d - Error: Cannot get JSON INFO ", #function, #line)
         }
         
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -182,8 +163,8 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
                         */
                         
                     }catch let error as NSError {
+                        self.view.makeToast("發生未預期的錯誤",duration: 3.0, position: .bottom)
                         NSLog("%s, line:%d - Error: \(error) ", #function, #line)
-
                     }
 
                     /* get json
@@ -221,83 +202,22 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
     
     private func downloadBannerImg(urls: [String])
     {
-        var countNum:Int = 0
-        //var images = [UIImage?](repeating: nil,count: urls.count)
-        bannerImages = [UIImage?](repeating: nil,count: urls.count)
+        //var countNum:Int = 0
+        
+        var src = [SDWebImageSource]()
+        
         for index in 0...urls.count-1 {
-            //print("URL: \(urls[index])")
-            Alamofire.request(urls[index]).responseImage { response in
-                switch response.result{
-                    case .success (let data):
-                        //let mytype = type(of: data)
-                        self.bannerImages[index] = response.result.value
-                        //print(self.bannerImages[index])
-                        
-                        countNum = countNum + 1
-                        //setup banner
-                        if(countNum == urls.count)
-                        {
-                            self.setBanner()
-                        }
-                    break
-                case .failure(let error):
-                    self.view.makeToast("請啟用網路連線下載圖片",duration: 3.0, position: .bottom)
-                    NSLog("%s, line:%d - Error: \(error)", #function, #line)
-                    break
-                }
-            }
+            src.append(SDWebImageSource(urlString: urls[index])!)
         }
         
+        self.galleryScrollView.setImageInputs(src)
+        self.galleryScrollView.contentScaleMode = .scaleToFill
+        self.galleryScrollView.slideshowInterval = 5
+        self.galleryScrollView.zoomEnabled = false
+        self.galleryScrollView.pageControlPosition = .insideScrollView
+        self.galleryScrollView.activityIndicator = DefaultActivityIndicator()
+        self.galleryScrollView.preload = ImagePreload.fixed(offset: 2)
         
-        
-        /*
-        for (index, element) in self.bannerImages.enumerated() {
-            if(element == nil)
-            {
-                print("Item \(index): nil")
-            }
-            else{
-                print("Item \(index): \(element)")
-            }
-        }
-        */
-    }
-    
-    private func setBanner()
-    {
-        print("SET BANNER")
-        for index in 0...bannerImages.count-1 {
-            let loc_x = scrollViewWidth * CGFloat(index)
-            let img = UIImageView(frame: CGRect(x:loc_x, y:-64,width:scrollViewWidth, height:scrollViewHeight))
-            img.image = bannerImages[index]
-            self.galleryScrollView.addSubview(img)
-        }
-        
-        /*
-        let imgOne = UIImageView(frame: CGRect(x:0, y:-64,width:scrollViewWidth, height:scrollViewHeight))
-        imgOne.image = UIImage(named: "ic_test_0.png")
-        let imgTwo = UIImageView(frame: CGRect(x:scrollViewWidth, y:-64,width:scrollViewWidth, height:scrollViewHeight))
-        imgTwo.image = UIImage(named: "ic_test_1.png")
-        let imgThree = UIImageView(frame: CGRect(x:scrollViewWidth*2, y:-64,width:scrollViewWidth, height:scrollViewHeight))
-        imgThree.image = UIImage(named: "ic_test_2.png")
-        
-        
-        self.galleryScrollView.addSubview(imgOne)
-        self.galleryScrollView.addSubview(imgTwo)
-        self.galleryScrollView.addSubview(imgThree)
-        */
-        
-        //4
-        let count = CGFloat(bannerImages.count)
-        self.galleryScrollView.contentSize =
-            CGSize(width:self.galleryScrollView.frame.width * count, height:self.galleryScrollView.frame.height)
-        self.galleryScrollView.delegate = self
-        self.galleryPageControl.numberOfPages = Int(count)
-        self.galleryPageControl.currentPage = 0
-        
-        self.galleryScrollView.isScrollEnabled = false
-        
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
     }
     
     private func genPicUrl(url: String, startindex: Int, endindex: Int) -> [String]
@@ -312,44 +232,6 @@ class HomeVC: BaseViewController, UIScrollViewDelegate {
         }
         
         return img_urls
-    }
-    
-    func moveToNextPage (){
-        
-        let pageWidth:CGFloat = self.galleryScrollView.frame.width
-        let maxWidth:CGFloat = pageWidth * 3
-        let contentOffset:CGFloat = self.galleryScrollView.contentOffset.x
-        let height:CGFloat = self.galleryScrollView.frame.height - 64
-        
-        var slideToX = contentOffset + pageWidth
-        
-        if  contentOffset + pageWidth == maxWidth{
-            slideToX = 0
-        }
-        self.galleryScrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:height), animated: true)
-    }
-    
-    //MARK: UIScrollView Delegate
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView){
-        // Test the offset and calculate the current page after scrolling ends
-        let pageWidth:CGFloat = scrollView.frame.width
-        let currentPage:CGFloat = floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
-        // Change the indicator
-        self.galleryPageControl.currentPage = Int(currentPage);
-        // Change the text accordingly
-        if Int(currentPage) == 0{
-            //textView.text = "Sweettutos.com is your blog of choice for Mobile tutorials"
-        }else if Int(currentPage) == 1{
-            //textView.text = "I write mobile tutorials mainly targeting iOS"
-        }else if Int(currentPage) == 2{
-            //textView.text = "And sometimes I write games tutorials about Unity"
-        }else{
-            //textView.text = "Keep visiting sweettutos.com for new coming tutorials, and don't forget to subscribe to be notified by email :)"
-            // Show the "Let's Start" button in the last slide (with a fade in animation)
-            //UIView.animate(withDuration: 1.0, animations: { () -> Void in
-            //    self.startButton.alpha = 1.0
-            //})
-        }
     }
     
     func buttonClicked(_ sender: AnyObject?) {

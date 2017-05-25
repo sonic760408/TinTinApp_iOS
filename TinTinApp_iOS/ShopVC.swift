@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShopVC: BaseViewController{
+class ShopVC: UIViewController{
     
     @IBOutlet private weak var btn_shop: UIButton!
     @IBOutlet private weak var btn_shopmap: UIButton!
@@ -17,7 +17,7 @@ class ShopVC: BaseViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSlideMenuButton()
+        //addSlideMenuButton()
         // Do any additional setup after loading the view.
         
         self.initViewObj()
