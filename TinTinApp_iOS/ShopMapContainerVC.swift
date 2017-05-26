@@ -14,7 +14,7 @@ import MapKit
 import GooglePlaces
 import Foundation
 
-class ShopMapContainerVC: UIViewController, CLLocationManagerDelegate {
+class ShopMapContainerVC: BaseViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var viewMap: GMSMapView!
 

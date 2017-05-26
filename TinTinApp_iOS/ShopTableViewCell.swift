@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwipeCellKit
 
 class ShopTableViewCell: UITableViewCell{
     
@@ -81,6 +82,8 @@ class ShopTableViewCell: UITableViewCell{
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        //self.addRightViewInCell()
+        //self.addRightCell()
         // Initialization code
     }
     
@@ -89,5 +92,94 @@ class ShopTableViewCell: UITableViewCell{
         
         // Configure the view for the selected state
     }
+    
+    /*
+    func addRightCell(){
+        //Create a view that will display when user swipe the cell in right
+        let viewCall = UIView()
+        viewCall.backgroundColor = UIColor.blue
+        viewCall.frame = CGRect(x: 0, y: 0,width: self.frame.height+20,height: self.frame.height)
+        //Add a label to display the call text
+        let lblCall = UILabel()
+        lblCall.text  = "AA"
+        lblCall.font = UIFont.systemFont(ofSize: 15.0)
+        lblCall.textColor = UIColor.yellow
+        lblCall.textAlignment = NSTextAlignment.center
+        lblCall.frame = CGRect(x: 0,y: self.frame.height - 20,width: viewCall.frame.size.width,height: 20)
+        //Add a button to perform the action when user will tap on call and add a image to display
+        /*
+        let btnCall = UIButton(type: UIButtonType.custom)
+        btnCall.frame = CGRect(x: (viewCall.frame.size.width - 40)/2,y: 5,width: 40,height: 40)
+        btnCall.setImage(UIImage(named: "nhi"), for: UIControlState())
+        btnCall.addTarget(self, action: #selector(ShopTableViewCell.callButtonClicked), for: UIControlEvents.touchUpInside)
+        */
+        
+        var imageView  = UIImageView(frame:CGRect(x: (viewCall.frame.size.width - 40)/2,y: 5,width: 40,height: 40))
+        imageView.image = UIImage(named:"metro")
+        
+        viewCall.addSubview(imageView)
+        viewCall.addSubview(lblCall)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap2(_:)))
+        
+        viewCall.addGestureRecognizer(tap)
+        
+        viewCall.isUserInteractionEnabled = true
+        
+        //Call the super addRightOptions to set the view that will display while swiping
+        super.addRightOptionsView(viewCall)
+    }
+    
+    func addRightViewInCell() {
+        
+        //Create a view that will display when user swipe the cell in right
+        let viewCall = UIView()
+        viewCall.backgroundColor = UIColor.lightGray
+        viewCall.frame = CGRect(x: 0, y: 0,width: self.frame.height+20,height: self.frame.height)
+        //Add a label to display the call text
+        let lblCall = UILabel()
+        lblCall.text  = "Call"
+        lblCall.font = UIFont.systemFont(ofSize: 15.0)
+        lblCall.textColor = UIColor.yellow
+        lblCall.textAlignment = NSTextAlignment.center
+        lblCall.frame = CGRect(x: 0,y: self.frame.height - 20,width: viewCall.frame.size.width,height: 20)
+        //Add a button to perform the action when user will tap on call and add a image to display
+        let btnCall = UIButton(type: UIButtonType.custom)
+        btnCall.frame = CGRect(x: (viewCall.frame.size.width - 40)/2,y: 5,width: 40,height: 40)
+        btnCall.setImage(UIImage(named: "nhi"), for: UIControlState())
+        btnCall.addTarget(self, action: #selector(ShopTableViewCell.callButtonClicked), for: UIControlEvents.touchUpInside)
+        
+        
+        var imageView  = UIImageView(frame:CGRect(x: (viewCall.frame.size.width - 40)/2,y: 5,width: 40,height: 40))
+        imageView.image = UIImage(named:"nhi")
+        
+        viewCall.addSubview(imageView)
+        viewCall.addSubview(lblCall)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        
+        viewCall.addGestureRecognizer(tap)
+        
+        viewCall.isUserInteractionEnabled = true
+        
+        //Call the super addRightOptions to set the view that will display while swiping
+        super.addRightOptionsView(viewCall)
+    }
 
+    func handleTap(_ sender: UITapGestureRecognizer) {
+        print("Hello World")
+        self.resetCellState()
+    }
+    
+    func handleTap2(_ sender: UITapGestureRecognizer) {
+        print("Call ")
+        self.resetCellState()
+    }
+    
+    func callButtonClicked(){
+        //Reset the cell state and close the swipe action
+        print("click")
+        self.resetCellState()
+    }
+    */
 }

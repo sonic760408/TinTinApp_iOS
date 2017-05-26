@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BGTableViewRowActionWithImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Gloss.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,11 +97,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2BDBB250ED3604333BEE69C9F249745B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>39AA3FC7447AC6B6A131668CFF9C01CD</key>
 		<dict>
 			<key>primary</key>
@@ -112,6 +112,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>40E6EAE2A81FA97A25F6FC5E06F14E4B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>40E7477AD67135868F5FB08136602674</key>
 		<dict>
 			<key>primary</key>
@@ -123,6 +128,16 @@
 			<true/>
 		</dict>
 		<key>56EE031A3DDF7320385EF4A173FFA9E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6F983DF4CA4AE96FC7D664DC5BB622A8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>713C9E6ADA6319BBD53E27AF5D65F71D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,12 +162,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>91A246A51C12BCE43BC0983729BE7CF5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A908FADF83BCCE99A6F30548A89D075F</key>
+		<key>BE9F9DF3DF75626D95B8066F83147F6C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,7 +172,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D826CAC631F889FB34ED952FF86C6A1E</key>
+		<key>CD3C329F3F2AFE82E428DE8ED501C341</key>
 		<dict>
 			<key>primary</key>
 			<true/>

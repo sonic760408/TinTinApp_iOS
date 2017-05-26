@@ -15,6 +15,17 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
 
         // Do any additional setup after loading the view.
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        var screen = UIScreen.main.bounds
+        var screenWidth = screen.size.width
+        var screenHeight = screen.size.height
+        var barHeight = screen.size.height*0.15 - UIApplication.shared.statusBarFrame.height
+        
+        //self.navigationController!.navigationBar.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: barHeight)
     }
 
     override func didReceiveMemoryWarning() {

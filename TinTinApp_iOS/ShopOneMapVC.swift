@@ -14,7 +14,7 @@ import MapKit
 import Alamofire
 import Toast_Swift
 
-class ShopOneMapVC: UIViewController, CLLocationManagerDelegate {
+class ShopOneMapVC: BaseViewController, CLLocationManagerDelegate {
     
     // This variable will hold the data being passed from the First View Controller
     var oneshop : ShopLoc!

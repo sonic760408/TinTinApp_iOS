@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShopVC: UIViewController{
+class ShopVC: BaseViewController{
     
     @IBOutlet private weak var btn_shop: UIButton!
     @IBOutlet private weak var btn_shopmap: UIButton!

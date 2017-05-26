@@ -9,10 +9,14 @@
 import UIKit
 import Alamofire
 import Gloss
+//import SwipeCellKit
+import BGTableViewRowActionWithImage
 
-class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDataSource,PKSwipeCellDelegateProtocol{
 
     @IBOutlet private weak var shoptable: UITableView!
+    
+    fileprivate var oldStoredCell:PKSwipeTableViewCell?
     
     var myshop: [ShopLoc] = []
     
@@ -27,6 +31,29 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //print("viewWillAppear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        //print("viewDidAppear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //print("viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //print("viewDidDisappear")
     }
     
     func initViewObj()
@@ -172,6 +199,7 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
         let cellIdentifier = "shop_cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
             as! ShopTableViewCell
+        
         //let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         //    as! ShopTableViewCell
         
@@ -207,6 +235,7 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
         //print("add cell: \(self.myshop[indexPath.row].getShop_name())")
         return cell
     }
+    
     
     // 點選 cell 後執行的動作
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -260,48 +289,59 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
         //array.append(ShopLoc())
     }
     
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let diag = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "\u{260E}\n 撥號") { action, index in
-            //self.isEditing = false
+        var image = UIImage(named: "phone-call")
+        var title: String? = "  撥號  "
+        var cellHeight = UInt(tableView.rowHeight)
+        
+        let diag = BGTableViewRowActionWithImage.rowAction(with: UITableViewRowActionStyle.default, title: title,titleColor: UIColor.white, backgroundColor: UIColor(rgb: 0x3b8cf7), image: image, forCellHeight: UInt(cellHeight), andFittedWidth: false) { (action, indexPath) in
             
+            self.isEditing = true
             //set dial phone (使用實機測試)
-            self.callNumber(phoneNumber: self.myshop[indexPath.row].getShop_phone())
+            self.callNumber(phoneNumber: self.myshop[(indexPath?.row)!].getShop_phone(), shop_name: self.myshop[(indexPath?.row)!].getShop_name())
         }
-        //more.backgroundColor = UIColor(patternImage: UIImage(named: "nhi")!)
-        diag.backgroundColor = UIColor(rgb: 0x3b8cf7)
-        //more.image = UIImage(named: "nhi")
         
-        let shop = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "\u{1F3EA}\n 分店位置") { action, index in
-            //self.isEditing = false
-            //set show map
-        //self.openViewControllerBasedOnIdentifierWithParameter("ShopOneVC"
-        //    ,self.myshop[indexPath.row])
-            self.performSegue(withIdentifier: "ShopOneMapVC", sender: self.myshop[indexPath.row])
+        image = UIImage(named: "shop")
+        title = "  分店位置  "
+        cellHeight = UInt(tableView.rowHeight)
+        
+        let shop = BGTableViewRowActionWithImage.rowAction(with: UITableViewRowActionStyle.default, title: title,titleColor: UIColor.white, backgroundColor: UIColor(rgb: 0x0965dc), image: image, forCellHeight: UInt(cellHeight),andFittedWidth: false) { (action, indexPath) in
+            
+            self.isEditing = true
+            self.performSegue(withIdentifier: "ShopOneMapVC", sender: self.myshop[(indexPath?.row)!])
+            //print("Selected action on indexPath=\(indexPath?.section)/\(indexPath?.row)")
         }
-        shop.backgroundColor = UIColor(rgb: 0x0a70f5)
         
-        /*
-        let share = TableViewRowAction(style: UITableViewRowActionStyle.default, title: "Share") { action, index in
-            //self.isEditing = false
-            print("share button tapped")
-        }
-        share.backgroundColor = UIColor.blue
-        share.image = UIImage(named: "metro")
-        */
-        
-        return [diag, shop]
-        //return [share, favorite, more]
+        return [diag!, shop!]
     }
     
-    private func callNumber(phoneNumber:String) {
+    private func callNumber(phoneNumber:String, shop_name: String) {
         
-        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+        if let phoneCallURL = URL(string: "telprompt://\(phoneNumber)") {
+            
             
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
                 application.open(phoneCallURL, options: [:], completionHandler: nil)
             }
+            
+            /*
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                let alertController = UIAlertController(title: "", message: "確定是否要撥打到\(shop_name) \n 電話: \(phoneNumber)?", preferredStyle: .alert)
+                let yesPressed = UIAlertAction(title: "撥號", style: .default, handler: { (action) in
+                    application.open(phoneCallURL)
+                })
+                let noPressed = UIAlertAction(title: "取消", style: .default, handler: { (action) in
+                    
+                })
+                alertController.addAction(yesPressed)
+                alertController.addAction(noPressed)
+                present(alertController, animated: true, completion: nil)
+            }
+            */
         }
     }
     
@@ -328,24 +368,42 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 
+    //MARK: PKSwipeTableViewCell Delegate
+    func swipeBeginInCell(_ cell: PKSwipeTableViewCell) {
+        oldStoredCell = cell
+    }
+    
+    func swipeDoneOnPreviousCell() -> PKSwipeTableViewCell? {
+        guard let cell = oldStoredCell else {
+            return nil
+        }
+        return cell
+    }
 }
 
-
-class TableViewRowAction: UITableViewRowAction
-{
-    var image: UIImage?
-    
-    func _setButton(button: UIButton)
-    {
-        if let image = image, let titleLabel = button.titleLabel
-        {
-            let labelString = NSString(string: titleLabel.text!)
-            let titleSize = labelString.size(attributes: [NSFontAttributeName: titleLabel.font])
-            
-            button.tintColor = UIColor.white
-            button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
-            button.imageEdgeInsets.right = -titleSize.width
-        }
+extension UIImage {
+    func filledImage(fillColor: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()!
+        fillColor.setFill()
+        
+        context.translateBy(x: 0, y: self.size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        
+        context.setBlendMode(CGBlendMode.colorBurn)
+        
+        let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
+        context.draw(self.cgImage!, in: rect)
+        
+        context.setBlendMode(CGBlendMode.sourceIn)
+        context.addRect(rect)
+        context.drawPath(using: CGPathDrawingMode.fill)
+        
+        let coloredImg : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return coloredImg
     }
 }
 

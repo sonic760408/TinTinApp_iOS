@@ -24,6 +24,7 @@ target 'TinTinApp_iOS' do
   pod "ImageSlideshow/SDWebImage"
   pod 'SwiftPhotoGallery'
   #pod 'Kingfisher', '~> 3.0'
+  pod "BGTableViewRowActionWithImage"
   
   target 'TinTinApp_iOSTests' do
     inherit! :search_paths

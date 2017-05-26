@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class FacebookVC: UIViewController{
+class FacebookVC: BaseViewController{
     
     @IBOutlet weak var webView: UIWebView!
     
