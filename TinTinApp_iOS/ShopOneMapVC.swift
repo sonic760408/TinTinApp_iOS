@@ -149,7 +149,7 @@ class ShopOneMapVC: BaseViewController, CLLocationManagerDelegate {
         
         //refresh location every 30 sec
         
-        if (locationFixAchieved == false) {
+        if (locationFixAchieved == false && viewMap != nil) {
             locationFixAchieved = true
             
             //print(" --- 2 --- ")
@@ -265,6 +265,17 @@ class ShopOneMapVC: BaseViewController, CLLocationManagerDelegate {
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
         self.title=""
+        
+        //set button
+        shoploc_btn.backgroundColor = .clear
+        shoploc_btn.layer.cornerRadius = 5
+        shoploc_btn.layer.borderWidth = 1
+        shoploc_btn.layer.borderColor = UIColor.blue.cgColor
+        
+        refresh_btn.backgroundColor = .clear
+        refresh_btn.layer.cornerRadius = 5
+        refresh_btn.layer.borderWidth = 1
+        refresh_btn.layer.borderColor = UIColor.blue.cgColor
         
         //set camera as taiwan center
         let camera = GMSCameraPosition.camera(withLatitude: oneshop.getShop_lat(),

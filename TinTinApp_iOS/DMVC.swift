@@ -19,7 +19,13 @@ class DMVC: BaseViewController {
     
     @IBOutlet weak var index_label: UILabel!
     
+    @IBOutlet weak var prev_btn: UIButton!
+    @IBOutlet weak var next_btn: UIButton!
+    
     let DM_UNSCRIBE_URL:String = "https://www.norbelbaby.com.tw/TinTinAppServlet/dm/json/cancelDM";
+    
+    var cur_page: Int = 0
+    var max_page: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,9 +88,11 @@ class DMVC: BaseViewController {
         let parameters = ["",""]
         
         do {
+            self.view.makeToastActivity(.center)
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
         } catch {
             // No-op
+            self.view.hideToastActivity()
             self.view.makeToast("無法取得JSON資訊",duration: 3.0, position: .bottom)
             NSLog("%s, line:%d - Error: Cannot get JSON INFO ", #function, #line)
         }
@@ -121,10 +129,12 @@ class DMVC: BaseViewController {
                         
                         //download picture
                         self.downloadDMImg(urls: img_urls)
-                        
+                        self.view.hideToastActivity()
                     }catch let error as NSError {
+                        self.view.hideToastActivity()
                         self.view.makeToast("發生未預期的錯誤",duration: 3.0, position: .bottom)
                         NSLog("%s, line:%d - Error: \(error) ", #function, #line)
+                        
                     }
                     
                     /* get json
@@ -192,15 +202,92 @@ class DMVC: BaseViewController {
         self.dmview.pageControlPosition = .hidden
         self.dmview.circular = false
         self.dmview.preload = ImagePreload.fixed(offset: 1)
+
         self.dmview.didEndDecelerating = {
             //implement func
             //print(" CURRENT PAGE: \(self.dmview.currentPage)")
             self.index_label.text = String(self.dmview.currentPage + 1).appending("/").appending(String(urls.count))
+            self.cur_page = self.dmview.currentPage
+            
+            if(self.cur_page == 0)
+            {
+                self.prev_btn.isHidden = true
+                self.next_btn.isHidden = false
+            }
+            else if(self.cur_page == self.max_page)
+            {
+                self.prev_btn.isHidden = false
+                self.next_btn.isHidden = true
+            }else
+            {
+                self.prev_btn.isHidden = false
+                self.next_btn.isHidden = false
+            }
+        }
+        
+        self.max_page = urls.count-1
+        
+        if(self.cur_page == 0)
+        {
+            prev_btn.isHidden = true
+        }else{
+            prev_btn.isHidden = false
+        }
+        
+        if(self.max_page == 0){
+            next_btn.isHidden = true
+        }else
+        {
+            next_btn.isHidden = false
         }
 
         //self.dmview.activityIndicator = DefaultActivityIndicator()
-        
-        
+    }
+    
+    @IBAction func prevPage(sender: UIButton) {
+        if(cur_page == 0)
+        {
+            //print(" END OF PREVIOUS DM")
+        }
+        else{
+            self.dmview.setCurrentPage(cur_page - 1, animated: true)
+            cur_page = cur_page - 1
+            self.index_label.text = String(cur_page + 1).appending("/").appending(String(max_page + 1))
+            self.cur_page = self.dmview.currentPage
+            
+            if(cur_page == 0)
+            {
+                prev_btn.isHidden = true
+                next_btn.isHidden = false
+            }
+            else{
+                prev_btn.isHidden = false
+                next_btn.isHidden = false
+            }
+        }
+    }
+    
+    @IBAction func nextPage(sender: UIButton) {
+        if(cur_page == max_page)
+        {
+            //print(" END OF NEXT DM")
+        }
+        else{
+            self.dmview.setCurrentPage(cur_page + 1, animated: true)
+            cur_page = cur_page + 1
+            self.index_label.text = String(cur_page + 1).appending("/").appending(String(max_page + 1))
+            self.cur_page = self.dmview.currentPage
+            
+            if(cur_page == max_page)
+            {
+                prev_btn.isHidden = false
+                next_btn.isHidden = true
+            }
+            else{
+                prev_btn.isHidden = false
+                next_btn.isHidden = false
+            }
+        }
     }
 
     /*

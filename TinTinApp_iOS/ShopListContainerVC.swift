@@ -12,18 +12,23 @@ import Gloss
 //import SwipeCellKit
 import BGTableViewRowActionWithImage
 
-class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDataSource,PKSwipeCellDelegateProtocol{
+class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewDataSource,UIPickerViewDelegate, UIPickerViewDataSource{
+    
+    @IBOutlet weak var city_picker: UIPickerView!
+    
+    let citylist = ["全部", "北部", "中部", "南部", "東部", "外島", "台北", "高雄", "新北", "桃園", "台中", "台南", "基隆", "新竹", "苗栗", "彰化", "南投", "雲林", "嘉義", "屏東", "宜蘭", "花蓮", "台東", "澎湖", "金門", "馬祖"]
+    
 
     @IBOutlet private weak var shoptable: UITableView!
     
-    fileprivate var oldStoredCell:PKSwipeTableViewCell?
-    
     var myshop: [ShopLoc] = []
+    var filtershop: [ShopLoc] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //createPicker()
         initViewObj()
         loadInfo()
     }
@@ -55,7 +60,7 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidDisappear(animated)
         //print("viewDidDisappear")
     }
-    
+
     func initViewObj()
     {
         let logo = UIImage(named: "ic_title.png")
@@ -63,13 +68,13 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationItem.titleView = imageView
         self.title=""
         
+
+        
         /*
          self.btn_shop.addTarget(self, action: #selector(ShopVC.buttonClicked(_:)), for: .touchUpInside)
          self.btn_shopmap.addTarget(self, action: #selector(ShopVC.buttonClicked(_:)), for: .touchUpInside)
          */
     }
-    
-    
     
     func loadInfo()
     {
@@ -174,6 +179,11 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
             self.shoptable.reloadData()
         })
         
+        //reg picker
+        self.city_picker.dataSource = self
+        self.city_picker.delegate = self
+        
+        
     }
 
     /*
@@ -186,7 +196,43 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
     }
     */
     
-    //delegate methods
+    // picker delegate method
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int{
+        return 1
+        
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        
+        return citylist.count
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        self.view.endEditing(true)
+        return citylist[row]
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(row == 0)
+        {
+            
+        }
+        
+        print(" CITY: \(citylist[row])")
+        self.city_picker.isHidden = false
+        
+        //do filter
+        //let filterArray = self.myshop.filter() {nil != $0.containsString("")}
+        
+        
+        
+    }
+    
+    // table delegate methods
     // 必須實作的方法：每一組有幾個 cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("numberOfRowsInSection")
@@ -368,17 +414,6 @@ class ShopListContainerVC: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 
-    //MARK: PKSwipeTableViewCell Delegate
-    func swipeBeginInCell(_ cell: PKSwipeTableViewCell) {
-        oldStoredCell = cell
-    }
-    
-    func swipeDoneOnPreviousCell() -> PKSwipeTableViewCell? {
-        guard let cell = oldStoredCell else {
-            return nil
-        }
-        return cell
-    }
 }
 
 extension UIImage {

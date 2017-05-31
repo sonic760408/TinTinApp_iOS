@@ -216,7 +216,7 @@ class HomeVC: BaseViewController {
         self.galleryScrollView.zoomEnabled = false
         self.galleryScrollView.pageControlPosition = .insideScrollView
         self.galleryScrollView.activityIndicator = DefaultActivityIndicator()
-        self.galleryScrollView.preload = ImagePreload.fixed(offset: 2)
+        self.galleryScrollView.preload = ImagePreload.fixed(offset: 3)
         
     }
     
@@ -244,7 +244,7 @@ class HomeVC: BaseViewController {
         } else if sender === btn_fb {
             // do something
             print("FB\n")
-            self.openViewControllerBasedOnIdentifier("FacebookVC")
+            self.openViewControllerBasedOnIdentifier("WebVC")
         } else if sender === btn_event {
             // do something
             print("EVENT\n")
@@ -267,10 +267,36 @@ class HomeVC: BaseViewController {
         if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
             NSLog("%s, line:%d - same VC", #function, #line)
         } else {
-            self.navigationController!.pushViewController(destViewController, animated: true)
+            
+            if(strIdentifier == "WebVC")
+            {
+                guard let detailVC = destViewController as? WebVC else {
+                    // uh oh, casting failed. maybe do some error handling.
+                    NSLog("%s, line:%d - Error: detailVC is not WebVC", #function, #line)
+                    return
+                }
+                
+                detailVC.weburl = "https://www.facebook.com/norbelbaby.tintin"
+                self.navigationController!.pushViewController(detailVC, animated: true)
+            }
+            else{
+                self.navigationController!.pushViewController(destViewController, animated: true)
+            }
         }
     }
     
+    /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is FacebookVC{
+            print(" xxxx FB xxxx ")
+            let controller = segue.destination as! FacebookVC
+            controller.myurl = "myurl"
+        }
+        else{
+            print(" xxxx NO FB xxxx ")
+        }
+    }
+    */
     
     /*
     // MARK: - Navigation

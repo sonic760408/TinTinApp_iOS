@@ -13,7 +13,7 @@ class Event: Decodable{
     
     private var name:String
     private var enabled:Bool
-    private var order:Int
+    var order:Int
     private var actionurl:String
     private var iconurl:String
     private var rundate:String
@@ -52,5 +52,75 @@ class Event: Decodable{
         
         self.rundate = ("rundate" <~~ json)!
         self.deadline = ("deadline" <~~ json)!
+    }
+    
+    func setName(_name: String)
+    {
+        self.name = _name
+    }
+    
+    func getName()->String
+    {
+        return self.name
+    }
+    
+    func setEnabled(_enabled: Bool)
+    {
+        self.enabled = _enabled
+    }
+    
+    func getEnabled()->Bool
+    {
+        return self.enabled
+    }
+    
+    func setOrder(_order: Int)
+    {
+        self.order = _order
+    }
+    
+    func getOrder()->Int
+    {
+        return self.order
+    }
+    
+    func setActionurl(_actionurl: String)
+    {
+        self.actionurl = _actionurl
+    }
+    
+    func getActionurl()->String
+    {
+        return self.actionurl
+    }
+    
+    func setIconurl(_iconurl: String)
+    {
+        self.iconurl = _iconurl
+    }
+    
+    func getIconurl()->String
+    {
+        return self.iconurl
+    }
+    
+    func setRundate(_rundate: String)
+    {
+        self.rundate = _rundate
+    }
+    
+    func getRundate()->String
+    {
+        return self.rundate
+    }
+    
+    func setDeadline(_deadline: String)
+    {
+        self.deadline = _deadline
+    }
+    
+    func getDeadline()->String
+    {
+        return self.deadline
     }
 }

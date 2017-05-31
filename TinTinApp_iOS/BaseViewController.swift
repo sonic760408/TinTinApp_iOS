@@ -52,7 +52,12 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         case 2:
             print("FB\n", terminator: "")
             
-            self.openViewControllerBasedOnIdentifier("FacebookVC")
+            self.openViewControllerBasedOnIdentifier("WebVC")
+            
+            break
+            
+        case 3:
+            self.openViewControllerBasedOnIdentifier("EventVC")
             
             break
         default:
@@ -68,7 +73,20 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
             
         } else {
-            self.navigationController!.pushViewController(destViewController, animated: true)
+            if(strIdentifier == "WebVC")
+            {
+                guard let detailVC = destViewController as? WebVC else {
+                    // uh oh, casting failed. maybe do some error handling.
+                    NSLog("%s, line:%d - Error: detailVC is not WebVC", #function, #line)
+                    return
+                }
+                
+                detailVC.weburl = "https://www.facebook.com/norbelbaby.tintin"
+                self.navigationController!.pushViewController(detailVC, animated: true)
+            }
+            else{
+                self.navigationController!.pushViewController(destViewController, animated: true)
+            }
         }
     }
     

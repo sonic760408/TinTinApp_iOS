@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E732E644DB3D16CFB2AA17C /* Pods_TinTinApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D7A35DB09B36D96E93E353 /* Pods_TinTinApp_iOS.framework */; };
+		06843EAE0B97FE50BCA1B7C8 /* Pods_TinTinApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF36E979509732626BF1B784 /* Pods_TinTinApp_iOS.framework */; };
 		6C004BD41EC18D5C004BC3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C004BD31EC18D5C004BC3A6 /* AppDelegate.swift */; };
 		6C004BD91EC18D5C004BC3A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C004BD71EC18D5C004BC3A6 /* Main.storyboard */; };
 		6C004BDE1EC18D5C004BC3A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C004BDC1EC18D5C004BC3A6 /* LaunchScreen.storyboard */; };
@@ -22,17 +22,21 @@
 		6C80108B1ECC4BA20014E6E1 /* EmptySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80108A1ECC4BA20014E6E1 /* EmptySegue.swift */; };
 		6C80108D1ECC4DD30014E6E1 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80108C1ECC4DD30014E6E1 /* ContainerViewController.swift */; };
 		6CA390721EC94F8F00067B70 /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA390711EC94F8F00067B70 /* ShopTableViewCell.swift */; };
-		6CAD32FA1ED7F0CD00BAC04C /* PKSwipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAD32F91ED7F0CD00BAC04C /* PKSwipeTableViewCell.swift */; };
 		6CB20BA51ECD6F6F005761B1 /* ShopMapContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB20BA41ECD6F6F005761B1 /* ShopMapContainerVC.swift */; };
+		6CB589AA1EDE93C200D9B759 /* ImageSlideshow.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 6CB589A81EDE93C200D9B759 /* ImageSlideshow.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6CB589AB1EDE93C200D9B759 /* ImageSlideshow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB589A91EDE93C200D9B759 /* ImageSlideshow.framework */; };
+		6CB589AC1EDE93C200D9B759 /* ImageSlideshow.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB589A91EDE93C200D9B759 /* ImageSlideshow.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6CCF5EBF1EC2A18800D1CDE7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCF5EBE1EC2A18800D1CDE7 /* BaseViewController.swift */; };
 		6CCF5EC11EC2A1D100D1CDE7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCF5EC01EC2A1D100D1CDE7 /* MenuViewController.swift */; };
 		6CCF5EC31EC2A24F00D1CDE7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCF5EC21EC2A24F00D1CDE7 /* HomeVC.swift */; };
 		6CCF5EC51EC2A27900D1CDE7 /* ShopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCF5EC41EC2A27900D1CDE7 /* ShopVC.swift */; };
-		6CCF5EC71EC2A5D500D1CDE7 /* FacebookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCF5EC61EC2A5D500D1CDE7 /* FacebookVC.swift */; };
+		6CCF5EC71EC2A5D500D1CDE7 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCF5EC61EC2A5D500D1CDE7 /* WebVC.swift */; };
 		6CD772981EC43A7400568288 /* ShopLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD772971EC43A7400568288 /* ShopLocModel.swift */; };
 		6CD9CF9B1ECE93BC004503C3 /* ShopOneMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD9CF9A1ECE93BC004503C3 /* ShopOneMapVC.swift */; };
 		6CD9CFA31ECEA0EE004503C3 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CD9CFA21ECEA0EE004503C3 /* Asset.xcassets */; };
 		6CDDD54B1ED57D6F007342ED /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDDD54A1ED57D6F007342ED /* NavigationVC.swift */; };
+		6CE43D311ED92D64009D1010 /* EventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE43D301ED92D64009D1010 /* EventViewCell.swift */; };
+		6CE43D331ED92EFC009D1010 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE43D321ED92EFC009D1010 /* File.swift */; };
 		D1AF088E4268D020E18B95A3 /* Pods_TinTinApp_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B409486FD07F07B3A3EB2D25 /* Pods_TinTinApp_iOSUITests.framework */; };
 		F166A72BAE19FBA124D4C97E /* Pods_TinTinApp_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0787E9A66AA6430727AF39 /* Pods_TinTinApp_iOSTests.framework */; };
 /* End PBXBuildFile section */
@@ -54,8 +58,32 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6CB589AD1EDE93C200D9B759 /* Embed PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6CB589AA1EDE93C200D9B759 /* ImageSlideshow.bundle in Embed PlugIns */,
+			);
+			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CB589AE1EDE93C200D9B759 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6CB589AC1EDE93C200D9B759 /* ImageSlideshow.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		29D7A35DB09B36D96E93E353 /* Pods_TinTinApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinTinApp_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A6A580ED84BFF3C9BD02E80 /* Pods-TinTinApp_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinTinApp_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TinTinApp_iOS/Pods-TinTinApp_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4BA1D1449FF02A7DD7FED737 /* Pods-TinTinApp_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinTinApp_iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TinTinApp_iOSUITests/Pods-TinTinApp_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6C004BD01EC18D5C004BC3A6 /* TinTinApp_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinTinApp_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,23 +106,27 @@
 		6C80108A1ECC4BA20014E6E1 /* EmptySegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySegue.swift; sourceTree = "<group>"; };
 		6C80108C1ECC4DD30014E6E1 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		6CA390711EC94F8F00067B70 /* ShopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopTableViewCell.swift; sourceTree = "<group>"; };
-		6CAD32F91ED7F0CD00BAC04C /* PKSwipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKSwipeTableViewCell.swift; sourceTree = "<group>"; };
 		6CB20BA41ECD6F6F005761B1 /* ShopMapContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopMapContainerVC.swift; sourceTree = "<group>"; };
+		6CB589A81EDE93C200D9B759 /* ImageSlideshow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ImageSlideshow.bundle; path = framework/ImageSlideshow.bundle; sourceTree = "<group>"; };
+		6CB589A91EDE93C200D9B759 /* ImageSlideshow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageSlideshow.framework; path = framework/ImageSlideshow.framework; sourceTree = "<group>"; };
 		6CCF5EBE1EC2A18800D1CDE7 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		6CCF5EC01EC2A1D100D1CDE7 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		6CCF5EC21EC2A24F00D1CDE7 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		6CCF5EC41EC2A27900D1CDE7 /* ShopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopVC.swift; sourceTree = "<group>"; };
-		6CCF5EC61EC2A5D500D1CDE7 /* FacebookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookVC.swift; sourceTree = "<group>"; };
+		6CCF5EC61EC2A5D500D1CDE7 /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		6CD772971EC43A7400568288 /* ShopLocModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopLocModel.swift; sourceTree = "<group>"; };
 		6CD9CF9A1ECE93BC004503C3 /* ShopOneMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopOneMapVC.swift; sourceTree = "<group>"; };
 		6CD9CFA21ECEA0EE004503C3 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Asset.xcassets; path = ../Asset.xcassets; sourceTree = "<group>"; };
 		6CDDD54A1ED57D6F007342ED /* NavigationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
+		6CE43D301ED92D64009D1010 /* EventViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewCell.swift; sourceTree = "<group>"; };
+		6CE43D321ED92EFC009D1010 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		7E893FD99D266A3C4492BC4F /* Pods-TinTinApp_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinTinApp_iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TinTinApp_iOSUITests/Pods-TinTinApp_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		864C1E03DCFBAB1B9C1D810B /* Pods-TinTinApp_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinTinApp_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TinTinApp_iOSTests/Pods-TinTinApp_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		B16B1731C6C79B7CFE96F8A5 /* Pods-TinTinApp_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinTinApp_iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TinTinApp_iOSTests/Pods-TinTinApp_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B409486FD07F07B3A3EB2D25 /* Pods_TinTinApp_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinTinApp_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8AD537C89C36A857C92AC83 /* Pods-TinTinApp_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinTinApp_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TinTinApp_iOS/Pods-TinTinApp_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		DA0787E9A66AA6430727AF39 /* Pods_TinTinApp_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinTinApp_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF36E979509732626BF1B784 /* Pods_TinTinApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinTinApp_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +134,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E732E644DB3D16CFB2AA17C /* Pods_TinTinApp_iOS.framework in Frameworks */,
+				06843EAE0B97FE50BCA1B7C8 /* Pods_TinTinApp_iOS.framework in Frameworks */,
+				6CB589AB1EDE93C200D9B759 /* ImageSlideshow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,9 +174,11 @@
 		64416FC4C25C2D952CEFA5B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				29D7A35DB09B36D96E93E353 /* Pods_TinTinApp_iOS.framework */,
+				6CB589A81EDE93C200D9B759 /* ImageSlideshow.bundle */,
+				6CB589A91EDE93C200D9B759 /* ImageSlideshow.framework */,
 				DA0787E9A66AA6430727AF39 /* Pods_TinTinApp_iOSTests.framework */,
 				B409486FD07F07B3A3EB2D25 /* Pods_TinTinApp_iOSUITests.framework */,
+				FF36E979509732626BF1B784 /* Pods_TinTinApp_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -217,7 +252,7 @@
 				6CCF5EC41EC2A27900D1CDE7 /* ShopVC.swift */,
 				6C8010881ECC463A0014E6E1 /* ShopListContainerVC.swift */,
 				6CD9CF9A1ECE93BC004503C3 /* ShopOneMapVC.swift */,
-				6CCF5EC61EC2A5D500D1CDE7 /* FacebookVC.swift */,
+				6CCF5EC61EC2A5D500D1CDE7 /* WebVC.swift */,
 				6CCF5EBE1EC2A18800D1CDE7 /* BaseViewController.swift */,
 				6CCF5EC01EC2A1D100D1CDE7 /* MenuViewController.swift */,
 				6CDDD54A1ED57D6F007342ED /* NavigationVC.swift */,
@@ -229,7 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				6CA390711EC94F8F00067B70 /* ShopTableViewCell.swift */,
-				6CAD32F91ED7F0CD00BAC04C /* PKSwipeTableViewCell.swift */,
+				6CE43D301ED92D64009D1010 /* EventViewCell.swift */,
 			);
 			name = ViewCell;
 			sourceTree = "<group>";
@@ -255,6 +290,7 @@
 			children = (
 				6CD772971EC43A7400568288 /* ShopLocModel.swift */,
 				6C4CF8111ED2C681008E0A99 /* EventModel.swift */,
+				6CE43D321ED92EFC009D1010 /* File.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -280,6 +316,8 @@
 				6C004BCE1EC18D5C004BC3A6 /* Resources */,
 				A40FFAF996E7E5128FB8EDE8 /* [CP] Embed Pods Frameworks */,
 				F2B0B11C4BF9C2C27E4BDB4B /* [CP] Copy Pods Resources */,
+				6CB589AD1EDE93C200D9B759 /* Embed PlugIns */,
+				6CB589AE1EDE93C200D9B759 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -557,19 +595,20 @@
 				6C0474FB1ED3CFFE008ECBBB /* Utility.swift in Sources */,
 				6CDDD54B1ED57D6F007342ED /* NavigationVC.swift in Sources */,
 				6CB20BA51ECD6F6F005761B1 /* ShopMapContainerVC.swift in Sources */,
+				6CE43D331ED92EFC009D1010 /* File.swift in Sources */,
 				6C4CF8211ED2CF19008E0A99 /* DMVC.swift in Sources */,
 				6CCF5EC31EC2A24F00D1CDE7 /* HomeVC.swift in Sources */,
 				6CA390721EC94F8F00067B70 /* ShopTableViewCell.swift in Sources */,
 				6C80108B1ECC4BA20014E6E1 /* EmptySegue.swift in Sources */,
 				6CCF5EC51EC2A27900D1CDE7 /* ShopVC.swift in Sources */,
 				6C8010891ECC463A0014E6E1 /* ShopListContainerVC.swift in Sources */,
+				6CE43D311ED92D64009D1010 /* EventViewCell.swift in Sources */,
 				6C80108D1ECC4DD30014E6E1 /* ContainerViewController.swift in Sources */,
 				6C004BD41EC18D5C004BC3A6 /* AppDelegate.swift in Sources */,
 				6CCF5EBF1EC2A18800D1CDE7 /* BaseViewController.swift in Sources */,
 				6CCF5EC11EC2A1D100D1CDE7 /* MenuViewController.swift in Sources */,
-				6CAD32FA1ED7F0CD00BAC04C /* PKSwipeTableViewCell.swift in Sources */,
 				6C4CF8101ED2BF5D008E0A99 /* EventVC.swift in Sources */,
-				6CCF5EC71EC2A5D500D1CDE7 /* FacebookVC.swift in Sources */,
+				6CCF5EC71EC2A5D500D1CDE7 /* WebVC.swift in Sources */,
 				6C4CF8121ED2C681008E0A99 /* EventModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,6 +712,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -717,6 +757,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -727,12 +768,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = K8MA53M7KR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/framework",
+					"$(PROJECT_DIR)/framework/SDWebImage",
+					"$(PROJECT_DIR)/framework/ImageSlideshow",
+					"$(PROJECT_DIR)/framework/AFNetworking",
+					"$(PROJECT_DIR)/framework/ImageslideView",
+				);
 				INFOPLIST_FILE = TinTinApp_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tintin.TinTinApp-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -743,12 +793,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = K8MA53M7KR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/framework",
+					"$(PROJECT_DIR)/framework/SDWebImage",
+					"$(PROJECT_DIR)/framework/ImageSlideshow",
+					"$(PROJECT_DIR)/framework/AFNetworking",
+					"$(PROJECT_DIR)/framework/ImageslideView",
+				);
 				INFOPLIST_FILE = TinTinApp_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tintin.TinTinApp-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

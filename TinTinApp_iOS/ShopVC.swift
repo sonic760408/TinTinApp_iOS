@@ -45,6 +45,7 @@ class ShopVC: BaseViewController{
         super.viewDidDisappear(animated)
         
         //print("viewDidDisappear")
+        //setButton()
     }
 
 
@@ -54,10 +55,16 @@ class ShopVC: BaseViewController{
     }
     
     @IBAction func shopmap(sender: AnyObject) {
+
+        btn_shop.setImage(UIImage(named: "ic_shop_lists"), for: .normal)
+        btn_shopmap.setImage(UIImage(named: "ic_all_shop_selected"), for: .normal)
         container!.segueIdentifierReceivedFromParent("second", nil)
     }
     
     @IBAction func shoplist(sender: AnyObject) {
+
+        btn_shop.setImage(UIImage(named: "ic_shop_lists_selected"), for: .normal)
+        btn_shopmap.setImage(UIImage(named: "ic_all_shop"), for: .normal)
         container!.segueIdentifierReceivedFromParent("first", nil)
     }
    
@@ -67,6 +74,11 @@ class ShopVC: BaseViewController{
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
         self.title=""
+        
+        //btn_shop  = UIButton(type: .custom)
+        //btn_shop.setImage(UIImage(named: "ic_shop_lists_selected"), for: .normal)
+        //btn_shopmap = UIButton(type: .custom)
+        //btn_shopmap.setImage(UIImage(named: "ic_all_shop"), for: .normal)
         
         /*
         self.btn_shop.addTarget(self, action: #selector(ShopVC.buttonClicked(_:)), for: .touchUpInside)

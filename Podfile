@@ -18,13 +18,13 @@ target 'TinTinApp_iOS' do
   pod 'GooglePlaces' #google place
   pod 'NVActivityIndicatorView' #activity indicator view
   pod 'Toast-Swift', '~> 2.0.0' #android toast
-  #pod 'AlamofireImage', '~> 3.1' #Alamofire Image
-  #pod "ImageSlideshow/Alamofire", '~> 1.3' #Image Slide show
-  #pod "ImageSlideshow/Kingfisher"
-  pod "ImageSlideshow/SDWebImage"
-  pod 'SwiftPhotoGallery'
-  #pod 'Kingfisher', '~> 3.0'
-  pod "BGTableViewRowActionWithImage"
+  pod 'SDWebImage', '~>3.8' #SD Image #ImageSlideshow dependency
+  pod 'AlamofireImage', '~> 3.1' #Alamofire Image #ImageSlideshow dependency
+  #pod 'SwiftPhotoGallery'
+  pod 'Kingfisher', '~> 3.0' #ImageSlideshow dependency
+  pod 'BGTableViewRowActionWithImage'
+  pod 'AFNetworking' #ImageSlideshow dependency
+
   
   target 'TinTinApp_iOSTests' do
     inherit! :search_paths
