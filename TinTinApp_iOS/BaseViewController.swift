@@ -20,10 +20,10 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        var screen = UIScreen.main.bounds
-        var screenWidth = screen.size.width
-        var screenHeight = screen.size.height
-        var barHeight = screen.size.height*0.15 - UIApplication.shared.statusBarFrame.height
+        //let screen = UIScreen.main.bounds
+        //let screenWidth = screen.size.width
+        //let screenHeight = screen.size.height
+        //let barHeight = screen.size.height*0.15 - UIApplication.shared.statusBarFrame.height
         
         //self.navigationController!.navigationBar.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: barHeight)
     }

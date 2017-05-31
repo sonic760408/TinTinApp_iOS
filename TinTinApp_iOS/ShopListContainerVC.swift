@@ -14,15 +14,21 @@ import BGTableViewRowActionWithImage
 
 class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewDataSource,UIPickerViewDelegate, UIPickerViewDataSource{
     
-    @IBOutlet weak var city_picker: UIPickerView!
+    final let CITYLIST = ["全部", "北部", "中部", "南部", "東部", "外島", "台北", "高雄", "新北", "桃園", "台中", "台南", "基隆", "新竹", "苗栗", "彰化", "南投", "雲林", "嘉義", "屏東", "宜蘭", "花蓮", "台東", "澎湖", "金門", "馬祖"]
     
-    let citylist = ["全部", "北部", "中部", "南部", "東部", "外島", "台北", "高雄", "新北", "桃園", "台中", "台南", "基隆", "新竹", "苗栗", "彰化", "南投", "雲林", "嘉義", "屏東", "宜蘭", "花蓮", "台東", "澎湖", "金門", "馬祖"]
+    final let NORTH_SHOP_AREA:[String] = ["台北", "新北", "基隆", "桃園", "新竹", "苗栗"]
+    final let CENTER_SHOP_AREA:[String] = ["台中", "彰化", "南投"]
+    final let SOUTH_SHOP_AREA:[String] = ["雲林", "嘉義", "台南", "高雄", "屏東"]
+    final let EAST_SHOP_AREA:[String] = ["宜蘭", "花蓮", "台東"]
+    final let ISLAND_SHOP_AREA:[String] = ["澎湖", "金門", "馬祖"]
     
-
+    @IBOutlet private weak var city_picker: UIPickerView!
     @IBOutlet private weak var shoptable: UITableView!
     
     var myshop: [ShopLoc] = []
     var filtershop: [ShopLoc] = []
+    
+    var isFilter : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +89,7 @@ class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewD
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         
-        let parameters = ["foo": "bar"]
+        let parameters = ["": ""]
         
         do {
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
@@ -182,7 +188,7 @@ class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewD
         //reg picker
         self.city_picker.dataSource = self
         self.city_picker.delegate = self
-        
+        self.city_picker.isHidden = false
         
     }
 
@@ -204,39 +210,138 @@ class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        
-        return citylist.count
-        
+        return CITYLIST.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         self.view.endEditing(true)
-        return citylist[row]
+        return CITYLIST[row]
         
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(row == 0)
-        {
-            
-        }
         
-        print(" CITY: \(citylist[row])")
+        //print(" CITY: \(CITYLIST[row])")
         self.city_picker.isHidden = false
         
         //do filter
         //let filterArray = self.myshop.filter() {nil != $0.containsString("")}
         
+        self.filtershop = filterShop(pattern: CITYLIST[row])
         
+        /*
+        for i in 0..<self.filtershop.count{
+            print(" xxx \(self.filtershop[i].getShop_name()) xxx ")
+        }
+        */
         
+        //reload table
+        if(row == 0)
+        {
+            isFilter = false
+            
+        }
+        else
+        {
+            isFilter = true
+        }
+        
+        //reload table
+        self.shoptable.reloadData()
+        if(self.filtershop.count == 0 && isFilter == true)
+        {
+            self.view.makeToast("此地區無分店",duration: 2.0, position: .bottom)
+        }
+        
+    }
+    
+    func filterShop(pattern: String) -> [ShopLoc]
+    {
+        var filter : [ShopLoc] = []
+        
+        //北部
+        if(pattern == "北部")
+        {
+            for j in 0..<self.NORTH_SHOP_AREA.count{
+                for i in 0..<myshop.count {
+                    if(myshop[i].getShop_addr().contains(self.NORTH_SHOP_AREA[j]))
+                    {
+                        filter.append(myshop[i])
+                    }
+                }
+            }
+        }
+        else if(pattern == "中部")
+        {
+            for j in 0..<self.CENTER_SHOP_AREA.count{
+                for i in 0..<myshop.count {
+                    if(myshop[i].getShop_addr().contains(self.CENTER_SHOP_AREA[j]))
+                    {
+                        filter.append(myshop[i])
+                    }
+                }
+            }
+        }
+        else if(pattern == "南部")
+        {
+            for j in 0..<self.SOUTH_SHOP_AREA.count{
+                for i in 0..<myshop.count {
+                    if(myshop[i].getShop_addr().contains(self.SOUTH_SHOP_AREA[j]))
+                    {
+                        filter.append(myshop[i])
+                    }
+                }
+            }
+        }
+        else if(pattern == "東部")
+        {
+            for j in 0..<self.EAST_SHOP_AREA.count{
+                for i in 0..<myshop.count {
+                    if(myshop[i].getShop_addr().contains(self.EAST_SHOP_AREA[j]))
+                    {
+                        filter.append(myshop[i])
+                    }
+                }
+            }
+        }
+        else if(pattern == "外島")
+        {
+            for j in 0..<self.ISLAND_SHOP_AREA.count{
+                for i in 0..<myshop.count {
+                    if(myshop[i].getShop_addr().contains(self.ISLAND_SHOP_AREA[j]))
+                    {
+                        filter.append(myshop[i])
+                    }
+                }
+            }
+        }
+        //其他地方
+        else{
+            for i in 0..<myshop.count {
+                if(myshop[i].getShop_addr().contains(pattern))
+                {
+                    filter.append(myshop[i])
+                }
+            }
+        }
+        return filter
     }
     
     // table delegate methods
     // 必須實作的方法：每一組有幾個 cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("numberOfRowsInSection")
-        return self.myshop.count
+        
+        if(isFilter == false)
+        {
+            return self.myshop.count
+        }
+        else
+        {
+            return self.filtershop.count
+        }
+
     }
     
     // 必須實作的方法：每個 cell 要顯示的內容
@@ -257,22 +362,41 @@ class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewD
         
         //cell.textLabel?.text = self.myshop[indexPath.row].getShop_name()
         
-        cell.setNameLabel(shopname: self.myshop[indexPath.row].getShop_name())
-        var str = "地址:"
-        str = str.appending(self.myshop[indexPath.row].getShop_addr())
-        cell.setAddrLabel(addr: str)
-        str = "電話:"
-        str = str.appending(self.myshop[indexPath.row].getShop_phone())
-        cell.setTelLabel(tel: str)
-        str = "營業時間:"
-        str = str.appending(self.myshop[indexPath.row].getShop_onBus().appending("~"))
-        str = str.appending(self.myshop[indexPath.row].getShop_offBus())
-        cell.setOpenLabel(openhr: str)
-        cell.setShowImage(ispark: self.myshop[indexPath.row].getShop_fpark()
-            , isppark: self.myshop[indexPath.row].getShop_ppark()
-            , isnhi: self.myshop[indexPath.row].getIsHiShop()
-            , ismetro: self.myshop[indexPath.row].getIsMetro())
-        
+        if(isFilter == false){
+            cell.setNameLabel(shopname: self.myshop[indexPath.row].getShop_name())
+            var str = "地址:"
+            str = str.appending(self.myshop[indexPath.row].getShop_addr())
+            cell.setAddrLabel(addr: str)
+            str = "電話:"
+            str = str.appending(self.myshop[indexPath.row].getShop_phone())
+            cell.setTelLabel(tel: str)
+            str = "營業時間:"
+            str = str.appending(self.myshop[indexPath.row].getShop_onBus().appending("~"))
+            str = str.appending(self.myshop[indexPath.row].getShop_offBus())
+            cell.setOpenLabel(openhr: str)
+            cell.setShowImage(ispark: self.myshop[indexPath.row].getShop_fpark()
+                , isppark: self.myshop[indexPath.row].getShop_ppark()
+                , isnhi: self.myshop[indexPath.row].getIsHiShop()
+                , ismetro: self.myshop[indexPath.row].getIsMetro())
+        }
+        else
+        {
+            cell.setNameLabel(shopname: self.filtershop[indexPath.row].getShop_name())
+            var str = "地址:"
+            str = str.appending(self.filtershop[indexPath.row].getShop_addr())
+            cell.setAddrLabel(addr: str)
+            str = "電話:"
+            str = str.appending(self.filtershop[indexPath.row].getShop_phone())
+            cell.setTelLabel(tel: str)
+            str = "營業時間:"
+            str = str.appending(self.filtershop[indexPath.row].getShop_onBus().appending("~"))
+            str = str.appending(self.filtershop[indexPath.row].getShop_offBus())
+            cell.setOpenLabel(openhr: str)
+            cell.setShowImage(ispark: self.filtershop[indexPath.row].getShop_fpark()
+                , isppark: self.filtershop[indexPath.row].getShop_ppark()
+                , isnhi: self.filtershop[indexPath.row].getIsHiShop()
+                , ismetro: self.filtershop[indexPath.row].getIsMetro())
+        }
         //cell.nameLabel.text = restaurantNames[indexPath.row]
         //cell.thumbnailImageView.image = UIImage(named: restaurantImages[indexPath.row])
         //cell.locationLabel.text = restaurantLocations[indexPath.row]
@@ -289,8 +413,8 @@ class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
         
         //let name = info[indexPath.section][indexPath.row]
-        let name = self.myshop[indexPath.row].getShop_name()
-        print("選擇的是 \(name)")
+        //let name = self.myshop[indexPath.row].getShop_name()
+        //print("選擇的是 \(name)")
     }
     
     // 點選 Accessory 按鈕後執行的動作
@@ -344,9 +468,16 @@ class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewD
         
         let diag = BGTableViewRowActionWithImage.rowAction(with: UITableViewRowActionStyle.default, title: title,titleColor: UIColor.white, backgroundColor: UIColor(rgb: 0x3b8cf7), image: image, forCellHeight: UInt(cellHeight), andFittedWidth: false) { (action, indexPath) in
             
-            self.isEditing = true
+            self.shoptable.isEditing = false
+            //self.isEditing = true
             //set dial phone (使用實機測試)
-            self.callNumber(phoneNumber: self.myshop[(indexPath?.row)!].getShop_phone(), shop_name: self.myshop[(indexPath?.row)!].getShop_name())
+            if(self.isFilter == false){
+                self.callNumber(phoneNumber: self.myshop[(indexPath?.row)!].getShop_phone(), shop_name: self.myshop[(indexPath?.row)!].getShop_name())
+            }
+            else
+            {
+                self.callNumber(phoneNumber: self.filtershop[(indexPath?.row)!].getShop_phone(), shop_name: self.myshop[(indexPath?.row)!].getShop_name())
+            }
         }
         
         image = UIImage(named: "shop")
@@ -355,8 +486,14 @@ class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewD
         
         let shop = BGTableViewRowActionWithImage.rowAction(with: UITableViewRowActionStyle.default, title: title,titleColor: UIColor.white, backgroundColor: UIColor(rgb: 0x0965dc), image: image, forCellHeight: UInt(cellHeight),andFittedWidth: false) { (action, indexPath) in
             
-            self.isEditing = true
-            self.performSegue(withIdentifier: "ShopOneMapVC", sender: self.myshop[(indexPath?.row)!])
+            self.shoptable.isEditing = false
+            if(self.isFilter == false){
+                self.performSegue(withIdentifier: "ShopOneMapVC", sender: self.myshop[(indexPath?.row)!])
+            }
+            else
+            {
+                self.performSegue(withIdentifier: "ShopOneMapVC", sender: self.filtershop[(indexPath?.row)!])
+            }
             //print("Selected action on indexPath=\(indexPath?.section)/\(indexPath?.row)")
         }
         

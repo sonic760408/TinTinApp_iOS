@@ -16,6 +16,7 @@ class EventVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var eventtable: UITableView!
 
     var events : [Event] = []
+    let cellSpacingHeight: CGFloat = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -239,11 +240,22 @@ class EventVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
         dateFormatter.dateFormat = "MM-dd"
         str = str.appending(dateFormatter.string(from: dateObj!))
         
+        // add border and color
+        cell.backgroundColor = UIColor.white
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 4
+        cell.clipsToBounds = true
+        
         cell.setEventTimeLabel(event_time: str)
         
         return cell
     }
     
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
     
     // 點選 cell 後執行的動作
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
