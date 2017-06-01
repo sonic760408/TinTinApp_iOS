@@ -160,9 +160,16 @@ class DMVC: BaseViewController {
                      }
                      */
                 }
+                else
+                {
+                    self.view.hideToastActivity()
+                    self.view.makeToast("無法取得DM response",duration: 3.0, position: .bottom)
+                    NSLog("%s, line:%d - Error: 無法取得DM response", #function, #line)
+                }
                 
                 break
             case .failure(let error):
+                self.view.hideToastActivity()
                 self.view.makeToast("請啟用網路連線下載DM圖片",duration: 3.0, position: .bottom)
                 NSLog("%s, line:%d - Error: \(error)", #function, #line)
                 break
@@ -196,7 +203,7 @@ class DMVC: BaseViewController {
         //manual implement imageslide
         
         self.dmview.setImageInputs(src)
-        self.dmview.contentScaleMode = .scaleToFill
+        self.dmview.contentScaleMode = .scaleAspectFit
         self.dmview.slideshowInterval = 0
         self.dmview.zoomEnabled = true
         self.dmview.pageControlPosition = .hidden

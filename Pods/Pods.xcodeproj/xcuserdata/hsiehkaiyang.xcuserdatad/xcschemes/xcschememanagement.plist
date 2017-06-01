@@ -74,6 +74,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RSBarcodes_Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,7 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1686ED631A9EAE90081C93C4376C209F</key>
+		<key>1532C2F112AF219CBDF0F4BC0A907185</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>36842511A1C78348F8AD934148E20BC0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,12 +132,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4302CB5B3E20149012233610C0C26459</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4EFFF115C2355646D45419E8E11DC0AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>56EE031A3DDF7320385EF4A173FFA9E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>619F377234D4BE025BE6651ED5143691</key>
+		<key>61F28B10A93952479135915B5D37AEF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -138,11 +158,6 @@
 			<true/>
 		</dict>
 		<key>77218EC44A39BE270C84535DC19564FE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7DB19C67C787B237BC46013E03252E64</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -158,11 +173,6 @@
 			<true/>
 		</dict>
 		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B54C47132D021E8C16DB4087B7AB1B67</key>
 		<dict>
 			<key>primary</key>
 			<true/>

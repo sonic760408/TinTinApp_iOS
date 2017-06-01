@@ -415,6 +415,16 @@ class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewD
         //let name = info[indexPath.section][indexPath.row]
         //let name = self.myshop[indexPath.row].getShop_name()
         //print("選擇的是 \(name)")
+        
+        //open map
+        if(self.isFilter == false){
+            self.performSegue(withIdentifier: "ShopOneMapVC", sender: self.myshop[(indexPath.row)])
+        }
+        else
+        {
+            self.performSegue(withIdentifier: "ShopOneMapVC", sender: self.filtershop[(indexPath.row)])
+        }
+        
     }
     
     // 點選 Accessory 按鈕後執行的動作
@@ -437,7 +447,7 @@ class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewD
         return title
     }
     
-    func parseJSON(data: Any) -> [ShopLoc]
+    private func parseJSON(data: Any) -> [ShopLoc]
     {
         //print(_dict)
         
@@ -459,7 +469,7 @@ class ShopListContainerVC: BaseViewController, UITableViewDelegate, UITableViewD
         //array.append(ShopLoc())
     }
     
-    
+    //tableview rowaction delegate
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         var image = UIImage(named: "phone-call")

@@ -11,6 +11,108 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--SalesVC-->
+        <scene sceneID="Fjp-76-ZQ0">
+            <objects>
+                <viewController restorationIdentifier="SalesVC" storyboardIdentifier="SalesVC" id="ody-H6-j79" customClass="SalesVC" customModule="TinTinApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hC6-7U-Taa"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Nc-3R-bla"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G4x-hD-rIj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhS-b6-p0l">
+                                <rect key="frame" x="0.0" y="64" width="375" height="46.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qwj-Mx-49n" userLabel="Sales Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="124" height="46.5"/>
+                                        <state key="normal" image="ic_sales"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69X-se-boe" userLabel="Catalog Button">
+                                        <rect key="frame" x="124" y="0.0" width="124" height="46.5"/>
+                                        <state key="normal" image="ic_sales_catalog"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-Ah-qHc" userLabel="Search Button">
+                                        <rect key="frame" x="248" y="0.0" width="127" height="46.5"/>
+                                        <state key="normal" image="ic_sales_item"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Qwj-Mx-49n" firstAttribute="width" secondItem="EhS-b6-p0l" secondAttribute="width" multiplier="0.33" id="4RY-fd-OsT"/>
+                                    <constraint firstItem="Qwj-Mx-49n" firstAttribute="height" secondItem="EhS-b6-p0l" secondAttribute="height" id="OJ1-eX-IZS"/>
+                                    <constraint firstItem="69X-se-boe" firstAttribute="height" secondItem="EhS-b6-p0l" secondAttribute="height" id="UJX-oI-yLC"/>
+                                    <constraint firstItem="69X-se-boe" firstAttribute="width" secondItem="EhS-b6-p0l" secondAttribute="width" multiplier="0.33" id="YM3-vF-vTg"/>
+                                    <constraint firstItem="V1U-Ah-qHc" firstAttribute="height" secondItem="EhS-b6-p0l" secondAttribute="height" id="jNf-Wb-y0d"/>
+                                </constraints>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uAn-bo-y4W" userLabel="Sales Collection View">
+                                <rect key="frame" x="7" y="110" width="375" height="556.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aUx-LK-Y5t">
+                                    <size key="itemSize" width="177" height="217"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SalesItemViewCell" reuseIdentifier="SalesItemViewCell" id="9pG-bY-OqX" customClass="SalesItemViewCell" customModule="TinTinApp_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="217"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="177" height="217"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HMu-8m-b6r" userLabel="Sales Image View">
+                                                    <rect key="frame" x="20" y="20" width="137" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.69870334199999995" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="10" height="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="sales_img" destination="HMu-8m-b6r" id="9RO-my-4x1"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EhS-b6-p0l" firstAttribute="width" secondItem="G4x-hD-rIj" secondAttribute="width" id="Nfc-Sv-Oyv"/>
+                            <constraint firstItem="uAn-bo-y4W" firstAttribute="leading" secondItem="G4x-hD-rIj" secondAttribute="leading" id="W1b-lA-k8r"/>
+                            <constraint firstAttribute="trailing" secondItem="EhS-b6-p0l" secondAttribute="trailing" id="icf-85-MHI"/>
+                            <constraint firstItem="0Nc-3R-bla" firstAttribute="top" secondItem="uAn-bo-y4W" secondAttribute="bottom" id="ip4-R5-VnF"/>
+                            <constraint firstAttribute="trailing" secondItem="uAn-bo-y4W" secondAttribute="trailing" id="jNE-dO-1pM"/>
+                            <constraint firstItem="uAn-bo-y4W" firstAttribute="top" secondItem="EhS-b6-p0l" secondAttribute="bottom" id="mBU-cu-ZSG"/>
+                            <constraint firstItem="EhS-b6-p0l" firstAttribute="top" secondItem="hC6-7U-Taa" secondAttribute="bottom" id="n2b-rG-cHb"/>
+                            <constraint firstItem="EhS-b6-p0l" firstAttribute="height" secondItem="G4x-hD-rIj" secondAttribute="height" multiplier="0.07" id="y8X-ae-Wu5"/>
+                            <constraint firstItem="EhS-b6-p0l" firstAttribute="leading" secondItem="G4x-hD-rIj" secondAttribute="leading" id="zHG-yx-jCf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sales_collectview" destination="uAn-bo-y4W" id="qrU-IZ-kTq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hr4-hy-nde" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1856.8" y="-374.66266866566718"/>
+        </scene>
         <!--Home-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -240,11 +342,12 @@
                         <segue destination="FWC-Q1-1qW" kind="show" identifier="Shop" id="2x6-Sb-AI0"/>
                         <segue destination="zUE-J9-id6" kind="show" identifier="Event" id="i50-ZI-4IQ"/>
                         <segue destination="rh2-5F-Akc" kind="show" id="zQT-Rb-i8j"/>
+                        <segue destination="ody-H6-j79" kind="show" id="hdw-CV-EGm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1098.5507246376812" y="300.81521739130437"/>
+            <point key="canvasLocation" x="1068" y="300"/>
         </scene>
         <!--DMVC-->
         <scene sceneID="3Dw-Rx-GYf">
@@ -533,14 +636,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmg-Rd-beY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096.8" y="1233.7331334332835"/>
+            <point key="canvasLocation" x="1068" y="1234"/>
         </scene>
         <!--NavigationVC-->
         <scene sceneID="nrt-yR-DmY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DGj-7d-jfR" customClass="NavigationVC" customModule="TinTinApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="mjw-Ry-qIh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="mjw-Ry-qIh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -721,7 +824,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1x-Hb-Xck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2077.5999999999999" y="1557.5712143928038"/>
+            <point key="canvasLocation" x="1934" y="1109"/>
         </scene>
         <!--ShopListContainer-->
         <scene sceneID="aqo-2o-aiS">
@@ -1039,6 +1142,9 @@
         <image name="ic_all_shop" width="413" height="94"/>
         <image name="ic_leftarrow" width="50" height="50"/>
         <image name="ic_rightarrow" width="50" height="50"/>
+        <image name="ic_sales" width="276" height="94"/>
+        <image name="ic_sales_catalog" width="276" height="94"/>
+        <image name="ic_sales_item" width="276" height="94"/>
         <image name="ic_shop_lists_selected" width="413" height="94"/>
         <image name="metro" width="64" height="64"/>
         <image name="nhi" width="78" height="78"/>
@@ -1046,6 +1152,6 @@
         <image name="park_public" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ytf-un-ZTz"/>
+        <segue reference="WvG-AQ-ekI"/>
     </inferredMetricsTieBreakers>
 </document>

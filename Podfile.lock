@@ -47,6 +47,7 @@ PODS:
     - Material/Core (= 2.6.3)
   - Material/Core (2.6.3)
   - NVActivityIndicatorView (3.6.1)
+  - RSBarcodes_Swift (3.0.3)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -65,6 +66,7 @@ DEPENDENCIES:
   - Kingfisher (~> 3.0)
   - Material (~> 2.0)
   - NVActivityIndicatorView
+  - RSBarcodes_Swift (~> 3.0.3)
   - SDWebImage (~> 3.8)
   - SwipeCellKit
   - Toast-Swift (~> 2.0.0)
@@ -85,10 +87,11 @@ SPEC CHECKSUMS:
   Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
   Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
+  RSBarcodes_Swift: 3b4a9c2e81fe9f435a26f18a1b8b826665e7cf89
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SwipeCellKit: 01a58bf7e63d5df09aedd161828833944c4c333c
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: d4c6b39925ac28992e33e2e370eb1775c8917569
+PODFILE CHECKSUM: 18931c254fcd4fc53f9699d1518b4ce3034d07e7
 
 COCOAPODS: 1.2.1

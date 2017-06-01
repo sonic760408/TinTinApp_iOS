@@ -204,20 +204,28 @@ class ShopOneMapVC: BaseViewController, CLLocationManagerDelegate {
                 //print(response.data)     // server data
                 //print(response.result)   // result of response serialization
                 
-                
                 if let JSON = response.result.value {
                     //print("JSON: \(JSON)")
-                    let mapResponse: [String: AnyObject] = JSON as! [String : AnyObject]
                     
-                    let routesArray = (mapResponse["routes"] as? Array) ?? []
+                    let mapResponse = JSON as? [String : AnyObject] ?? nil
                     
-                    let routes = (routesArray.first as? Dictionary<String, AnyObject>) ?? [:]
-                    
-                    let overviewPolyline = (routes["overview_polyline"] as? Dictionary<String,AnyObject>) ?? [:]
-                    let polypoints = (overviewPolyline["points"] as? String) ?? ""
-                    let line  = polypoints
-                    
-                    self.addPolyLine(encodedString: line)
+                    if(mapResponse == nil)
+                    {
+                        self.view.makeToast("無法解析地圖JSON資料",duration: 3.0, position: .bottom)
+                        NSLog("%s, line:%d - Error: 無法解析地圖JSON資料", #function, #line)
+                    }
+                    else{
+                        
+                        let routesArray = (mapResponse?["routes"] as? Array) ?? []
+                        
+                        let routes = (routesArray.first as? Dictionary<String, AnyObject>) ?? [:]
+                        
+                        let overviewPolyline = (routes["overview_polyline"] as? Dictionary<String,AnyObject>) ?? [:]
+                        let polypoints = (overviewPolyline["points"] as? String) ?? ""
+                        let line  = polypoints
+                        
+                        self.addPolyLine(encodedString: line)
+                    }
                 }
                 
                 break

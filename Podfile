@@ -24,7 +24,7 @@ target 'TinTinApp_iOS' do
   pod 'Kingfisher', '~> 3.0' #ImageSlideshow dependency
   pod 'BGTableViewRowActionWithImage'
   pod 'AFNetworking' #ImageSlideshow dependency
-
+  pod 'RSBarcodes_Swift', '~> 3.0.3' #qrcode
   
   target 'TinTinApp_iOSTests' do
     inherit! :search_paths

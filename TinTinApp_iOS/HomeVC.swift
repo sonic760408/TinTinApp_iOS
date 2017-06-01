@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import SDWebImage
 import ImageSlideshow
 
 class HomeVC: BaseViewController {
@@ -131,7 +130,7 @@ class HomeVC: BaseViewController {
                 //print(response.request)  // original URL request
                 //print(response.response) // HTTP URL response
                 //print(response.data)     // server data
-                //print(response.result)   // result of response serialization
+                print(response.result)   // result of response serialization
                 
                 if let JSON = response.result.value {
                     
@@ -139,32 +138,48 @@ class HomeVC: BaseViewController {
 
                     let jsonarray = JSON as? [String:AnyObject] //NSDictionary to array
                     
-                    do{
-                        let piclurl = jsonarray!["piclurl"] as! String
-                        let indexfrom = jsonarray!["picfrom"] as! Int
-                        let picto = jsonarray!["picto"] as! Int
-                        
-                        let img_urls = self.genPicUrl(url: piclurl, startindex: indexfrom , endindex: picto)
-                        
-                        
-                        //download picture
-                        self.downloadBannerImg(urls: img_urls)
-                        
-                        /*
-                        for (index, element) in self.bannerImages.enumerated() {
-                            if(element == nil)
-                            {
-                                print("Item \(index): nil")
-                            }
-                            else{
-                                print("Item \(index): \(element)")
-                            }
-                        }
-                        */
-                        
-                    }catch let error as NSError {
+                    if(jsonarray == nil)
+                    {
                         self.view.makeToast("發生未預期的錯誤",duration: 3.0, position: .bottom)
-                        NSLog("%s, line:%d - Error: \(error) ", #function, #line)
+                        NSLog("%s, line:%d - Error: 無法取得JSON資料 ", #function, #line)
+                    }
+                    
+                    let errorcode = jsonarray!["error"] as? String
+                    if(errorcode != nil)
+                    {
+                        let exception = jsonarray!["exception"] as! String
+                        let description = jsonarray!["description"] as! String
+                        self.view.makeToast("錯誤: \(String(describing: errorcode)), Exception: \(exception), 描述: \(String(describing: description))",duration: 3.0, position: .bottom)
+                        NSLog("%s, line:%d - Error: \(errorcode ?? "unknown") ", #function, #line)
+                    }
+                    else{
+                        do{
+                            let piclurl = jsonarray!["piclurl"] as? String
+                            let indexfrom = jsonarray!["picfrom"] as? Int
+                            let picto = jsonarray!["picto"] as? Int
+                            
+                            let img_urls = self.genPicUrl(url: piclurl!, startindex: indexfrom! , endindex: picto!)
+                            
+                            
+                            //download picture
+                            self.downloadBannerImg(urls: img_urls)
+                            
+                            /*
+                             for (index, element) in self.bannerImages.enumerated() {
+                             if(element == nil)
+                             {
+                             print("Item \(index): nil")
+                             }
+                             else{
+                             print("Item \(index): \(element)")
+                             }
+                             }
+                             */
+                            
+                        }catch let error as NSError {
+                            self.view.makeToast("發生未預期的錯誤",duration: 3.0, position: .bottom)
+                            NSLog("%s, line:%d - Error: \(error) ", #function, #line)
+                        }
                     }
 
                     /* get json
@@ -254,6 +269,7 @@ class HomeVC: BaseViewController {
             self.openViewControllerBasedOnIdentifier("DMVC")
         }else if sender === btn_sales{
             print("SALES\n")
+            self.openViewControllerBasedOnIdentifier("SalesVC")
         }else if sender === btn_ticket{
             print("TICKET\n")
         }

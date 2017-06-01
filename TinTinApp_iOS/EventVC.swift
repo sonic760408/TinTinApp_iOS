@@ -70,16 +70,17 @@ class EventVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     func loadInfo()
     {
-        let url = URL(string: "https://www.norbelbaby.com.tw/TinTinAppServlet/action/json/todayAction")!
+                let url = URL(string: "https://www.norbelbaby.com.tw/TinTinAppServlet/action/json/todayAction")!
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         
-        let parameters = ["foo": "bar"]
-        
+        let parameters = ["": ""]
+        self.view.makeToastActivity(.center)
         do {
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
         } catch {
             // No-op
+            self.view.hideToastActivity()
             NSLog("%s, line:%d - Error: JSON ERROR", #function, #line)
         }
         
@@ -103,6 +104,7 @@ class EventVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
                     case 200:
                         NSLog("%s, line:%d - success", #function, #line)
                     default:
+                        self.view.hideToastActivity()
                         self.view.makeToast("取得活動資訊失敗: 錯誤代碼: \(status)",duration: 3.0, position: .bottom)
                         NSLog("%s, line:%d - error code %d", #function, #line, status)
                     }
@@ -130,11 +132,19 @@ class EventVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
                     
                     //register 
                     self.regShopTable()
+                    
+                    self.view.hideToastActivity()
                 }
-                
+                else
+                {
+                    self.view.hideToastActivity()
+                    self.view.makeToast("無法取得EVENT response",duration: 3.0, position: .bottom)
+                    NSLog("%s, line:%d - Error: 無法取得EVENT response", #function, #line)
+                }
                 break
                 
             case .failure(let error):
+                self.view.hideToastActivity()
                 self.view.makeToast("請啟用網路連線取得活動資訊",duration: 3.0, position: .bottom)
                 NSLog("%s, line:%d - Error: \(error)", #function, #line)
                 break
